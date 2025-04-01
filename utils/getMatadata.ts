@@ -7,6 +7,15 @@ const baseUrl = isProduction
 
 const titleTemplate = "%s | Token Streaming App";
 
+/**
+ * Generates metadata for a given page.
+ *
+ * @param {Object} options
+ * @param {string} options.title Page title
+ * @param {string} options.description Page description
+ * @param {string} [options.imageRelativePath="/thumbnail.png"] Relative path to the image for the page
+ * @returns {Metadata} The generated metadata
+ */
 export const getMetadata = ({
   title,
   description,
