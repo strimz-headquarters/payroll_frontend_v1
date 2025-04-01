@@ -1,7 +1,7 @@
 'use client'
 import { InfinitySpin } from "react-loader-spinner"
 
-const Preloader = () => {
+const Loader = () => {
     return (
         <div className="fixed top-0 left-0 w-full h-screen z-[9999] bg-[#F9FAFB] flex justify-center items-center">
             <InfinitySpin
@@ -12,4 +12,4 @@ const Preloader = () => {
     )
 }
 
-export default Preloader
+export default Loader

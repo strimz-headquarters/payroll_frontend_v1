@@ -23,7 +23,10 @@ const config: Config = {
         sora: ["Sora", "serif"],
         poppins: ["Poppins", "serif"],
       },
-      boxShadow: {},
+      boxShadow: {
+        joinWaitlistBtnShadow:
+          "0px -4px 4px 0px rgba(0, 0, 0, 0.2) inset, 0px 4px 4px 0px rgba(225, 225, 225, 0.25) inset, 0px 0px 0px 1px rgba(2, 199, 106, 0.25)",
+      },
     },
   },
   plugins: [tailwindAnimate],
