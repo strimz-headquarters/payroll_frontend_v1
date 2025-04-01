@@ -5,6 +5,13 @@ import Image from "next/image";
 import pattern from "@/public/patterns/strimzPatterns.png"
 import { useRouter } from "next/navigation";
 
+/**
+ * The NotFound component is a Next.js page component that renders a 404 page
+ * with a custom design. It provides a link to go back to the previous page and
+ * a link to return to the home page.
+ *
+ * @returns A JSX element representing the NotFound page.
+ */
 export default function NotFound() {
     const router = useRouter()
     return (
