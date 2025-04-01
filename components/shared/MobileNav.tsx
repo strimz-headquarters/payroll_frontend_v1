@@ -32,7 +32,7 @@ const MobileNav = () => {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <button className="text-strimzPrimary">
+                <button className="text-white">
                     <LayoutDashboard className='w-6 h-6' />
                 </button>
             </SheetTrigger>
@@ -42,7 +42,7 @@ const MobileNav = () => {
                         {/* logo */}
                         <Logo href='/' className='w-[120px]' image={strimzBlueLogo} />
                     </div>
-                    <div className="w-full mt-16 flex flex-col justify-center gap-3 items-center">
+                    <div className="w-full mt-16 flex flex-col justify-center gap-6 items-center">
                         {
                             navLinks.map((link: NavLinkTypes, i: number) => (
                                 <SheetClose asChild key={i}>

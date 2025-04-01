@@ -8,6 +8,8 @@ import MobileNav from './MobileNav';
 import { useRouter } from 'next/navigation';
 import { navLinks } from '@/utils/guestNavLinks';
 import { NavLinkTypes } from '@/types/guestpage';
+import { InteractiveHoverButton } from '../magicui/interactive-hover-button';
+import { LogIn } from 'lucide-react';
 
 /**
  * A responsive navigation bar with a progress bar at the top.
@@ -42,13 +44,13 @@ const NavBar = () => {
                 className="fixed top-0 left-0 right-0 bg-accent origin-[0%] h-[6px] z-[42]"
                 style={{ scaleX }}
             />
-            <header className='w-full bg-primary h-[76px] flex items-center'>
-                <nav className='w-full flex justify-between items-center'>
+            <header className='w-full bg-primary h-[80px] md:h-[82px] flex items-center px-4 md:px-8 lg:px-16'>
+                <nav className='w-full max-w-[1440px] flex justify-between items-center'>
                     {/* Logo */}
-                    <Logo href='/' image={StrimzWhiteLogo} className='w-[101px]' />
+                    <Logo href='/' image={StrimzWhiteLogo} className='w-[101px] md:w-[116px]' />
 
                     {/* links */}
-                    <div className='hidden md:flex gap-[24px] font-poppins items-center'>
+                    <div className='hidden lg:flex gap-[24px] font-poppins items-center'>
                         {
                             navLinks.map((link: NavLinkTypes, i: number) => (
                                 <Spy
@@ -57,7 +59,7 @@ const NavBar = () => {
                                     smooth={true}
                                     spy={true}
                                     duration={700}
-                                    className={`capitalize font-poppins text-[#D1D5DB] font-[500] text-[16px] cursor-pointer transition-all hover:text-white`}
+                                    className={`capitalize font-poppins text-[#D1D5DB] font-[450] text-[16px] cursor-pointer transition-all hover:text-white`}
                                 >
                                     {link.name}
                                 </Spy>
@@ -67,15 +69,14 @@ const NavBar = () => {
 
                     {/* buttons */}
                     <div className='flex items-center gap-[24px]'>
-                        <button
-                            type="button"
+                        <InteractiveHoverButton
+                            type='button'
                             onClick={() => router.push("/login")}
-                            className={`w-[100px] h-[40px] flex justify-center items-center bg-white rounded-[8px] cursor-pointer text-[14px] font-[500] font-poppins text-primary`}
-                        >
-                            Login
-                        </button>
+                            icon={<LogIn className="h-4 w-4" />}
+                            innerClassName='bg-accent rounded-[8px]'
+                            className='w-[120px] h-[40px] flex justify-center items-center bg-white rounded-[8px] cursor-pointer text-[14px] font-[500] font-poppins transition-all duration-300 text-primary'>Login</InteractiveHoverButton>
 
-                        <div className="md:hidden flex items-center">
+                        <div className="lg:hidden flex items-center">
                             <MobileNav />
                         </div>
                     </div>
