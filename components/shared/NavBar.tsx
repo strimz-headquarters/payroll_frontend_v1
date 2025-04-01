@@ -59,7 +59,7 @@ const NavBar = () => {
                                     smooth={true}
                                     spy={true}
                                     duration={700}
-                                    className={`capitalize font-poppins text-[#D1D5DB] font-[450] text-[16px] cursor-pointer transition-all hover:text-white`}
+                                    className={`capitalize font-poppins text-[#D1D5DB] font-[400] text-[16px] cursor-pointer transition-all hover:text-white`}
                                 >
                                     {link.name}
                                 </Spy>

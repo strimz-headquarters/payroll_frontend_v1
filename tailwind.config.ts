@@ -59,6 +59,8 @@ const config: Config = {
       boxShadow: {
         joinWaitlistBtnShadow:
           "0px -4px 4px 0px rgba(0, 0, 0, 0.2) inset, 0px 4px 4px 0px rgba(225, 225, 225, 0.25) inset, 0px 0px 0px 1px rgba(2, 199, 106, 0.25)",
+        ctaShadow:
+          "0px -4px 4px 0px #00000033 inset, 0px 4px 4px 0px #E1E1E140 inset",
       },
     },
   },
