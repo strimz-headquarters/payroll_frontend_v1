@@ -3,6 +3,8 @@ import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-b
 import { MoveRight } from "lucide-react"
 import { useRouter } from "next/navigation"
 import WorldMapWithAnimatedOverlay from "./worldMap"
+import PaddedLines from "./paddedLines"
+import MovingText from "./MovingText"
 
 /**
  * The HeroSection component renders a section with a heading, a paragraph, and a button.
@@ -17,7 +19,7 @@ const HeroSection = () => {
     const router = useRouter()
 
     return (
-        <section className='w-full min-h-screen lg:pt-[64px] pt-[56px] pb-16 overflow-x-hidden bg-primary '>
+        <section className='w-full min-h-screen lg:pt-[64px] pt-[56px] overflow-x-hidden bg-primary '>
             <main className="max-w-3xl mx-auto w-full flex flex-col items-center gap-6 pb-12 px-4 lg:px-4">
                 <div className="w-full flex flex-col items-center gap-4">
                     <h1 className="font-sora font-[700] lg:text-[64px] md:text-[56px] text-[46px] lg:leading-[64px] md:leading-[56px] leading-[48px] text-white text-center">Pay your team in crypto with ease</h1>
@@ -36,6 +38,12 @@ const HeroSection = () => {
             </main>
 
             <WorldMapWithAnimatedOverlay />
+
+            {/* padded lines */}
+            <PaddedLines />
+
+            {/* Moving texts */}
+            <MovingText />
         </section>
     )
 }
