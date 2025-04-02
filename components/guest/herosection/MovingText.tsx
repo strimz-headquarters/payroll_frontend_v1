@@ -3,6 +3,17 @@ import strimzBlueLogoIcon from "@/public/logoIcons/strimzBlueLogoPNG.svg"
 import Image from "next/image"
 import Marquee from "react-fast-marquee"
 
+/**
+ * A horizontally scrolling marquee of strimz logos.
+ *
+ * Renders a `<Marquee>` component with a CSS class of `w-full h-[60px] bg-[#F9FAFB]`.
+ * The marquee contains a component `<Content>`, which is rendered 12 times.
+ *
+ * The component is designed to be used as a header element, and is intended to be
+ * visually appealing and attention-grabbing.
+ *
+ * @returns {JSX.Element} A horizontally scrolling marquee of strimz logos.
+ */
 const MovingText = () => {
     return (
         <Marquee className="w-full h-[60px] bg-[#F9FAFB]">

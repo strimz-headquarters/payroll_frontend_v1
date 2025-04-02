@@ -10,6 +10,16 @@ import user4 from "@/public/images/4.png"
 import usdcIcon from '@/public/icons/usdc.png';
 import usdtIcon from '@/public/icons/usdt.png';
 
+/**
+ * WorldMapWithAnimatedOverlay is a component that displays an animated world map with overlay elements.
+ * It includes a background image of a world map, a central logo with a ping animation, and several user images positioned around the map.
+ * The component also renders SVG paths representing connections on the map, and animated icons (USDC and USDT) traversing these paths.
+ * The animations are achieved using framer-motion, providing a dynamic visual effect.
+ * It is designed to be fully responsive and adapts to various screen sizes.
+ *
+ * @returns {JSX.Element} A main HTML element containing the map and overlay animations.
+ */
+
 const WorldMapWithAnimatedOverlay = () => {
     return (
         <main className="w-full max-w-5xl mx-auto relative">

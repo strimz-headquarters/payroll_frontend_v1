@@ -1,5 +1,6 @@
+'use client'
 import HeroSection from "@/components/guest/herosection";
-
+import Benefits from "@/components/guest/whyStrimz";
 
 /**
  * The guest home page. This page is visible to users who are not signed in.
@@ -8,8 +9,9 @@ import HeroSection from "@/components/guest/herosection";
  */
 export default function Home() {
   return (
-    <main className="w-full bg-primary overflow-x-hidden">
+    <main className="w-full overflow-x-hidden">
       <HeroSection />
+      <Benefits />
     </main>
   );
 }

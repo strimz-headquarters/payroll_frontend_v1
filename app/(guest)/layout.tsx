@@ -19,7 +19,7 @@ export default function GuestLayout({
     return (
         <section className="w-full">
             <NavBar />
-            <main className="w-full">
+            <main className="w-full bg-white">
                 {children}
             </main>
             <ScrollToTopBtn />

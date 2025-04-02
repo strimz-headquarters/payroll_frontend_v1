@@ -45,7 +45,7 @@ const NavBar = () => {
                 style={{ scaleX }}
             />
             <header className='w-full bg-primary h-[80px] md:h-[82px] flex items-center px-4 md:px-8 lg:px-16'>
-                <nav className='w-full max-w-[1440px] flex justify-between items-center'>
+                <nav className='w-full max-w-6xl mx-auto flex justify-between items-center'>
                     {/* Logo */}
                     <Logo href='/' image={StrimzWhiteLogo} className='w-[101px] md:w-[116px]' />
 
