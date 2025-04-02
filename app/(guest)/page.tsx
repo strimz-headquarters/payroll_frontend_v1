@@ -8,7 +8,7 @@ import HeroSection from "@/components/guest/herosection";
  */
 export default function Home() {
   return (
-    <main className="w-full flex flex-col overflow-x-hidden">
+    <main className="w-full bg-primary overflow-x-hidden">
       <HeroSection />
     </main>
   );

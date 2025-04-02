@@ -17,8 +17,4 @@ export const navLinks: NavLinkTypes[] = [
     name: "FAQs",
     to: "faqs",
   },
-  {
-    name: "Utility bills",
-    to: "utilitybills",
-  },
 ];
