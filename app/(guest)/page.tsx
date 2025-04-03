@@ -5,6 +5,7 @@ import HeroSection from "@/components/guest/herosection";
 import HowItWorks from "@/components/guest/howItWorks";
 import Pricings from "@/components/guest/pricings";
 import Utility from "@/components/guest/utilitybill";
+import Faqs from "@/components/guest/faqs";
 
 /**
  * The guest home page. This page is visible to users who are not signed in.
@@ -20,6 +21,7 @@ export default function Home() {
       <BuiltForTrust />
       <HowItWorks />
       <Pricings />
+      <Faqs />
     </main>
   );
 }

@@ -24,3 +24,8 @@ export type PlansType = {
   yearlyPrice: number;
   features: string[];
 };
+
+export type FaqsTypes = {
+  question: string;
+  answer: string;
+};
