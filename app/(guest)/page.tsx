@@ -1,6 +1,7 @@
 'use client'
 import BuiltForTrust from "@/components/guest/builtForTrust";
 import HeroSection from "@/components/guest/herosection";
+import HowItWorks from "@/components/guest/howItWorks";
 import Utility from "@/components/guest/utilitybill";
 import Benefits from "@/components/guest/whyStrimz";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <Benefits />
       <Utility />
       <BuiltForTrust />
+      <HowItWorks />
     </main>
   );
 }
