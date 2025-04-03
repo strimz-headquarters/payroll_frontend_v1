@@ -6,6 +6,7 @@ import HowItWorks from "@/components/guest/howItWorks";
 import Pricings from "@/components/guest/pricings";
 import Utility from "@/components/guest/utilitybill";
 import Faqs from "@/components/guest/faqs";
+import CTA from "@/components/guest/CTA";
 
 /**
  * The guest home page. This page is visible to users who are not signed in.
@@ -22,6 +23,7 @@ export default function Home() {
       <HowItWorks />
       <Pricings />
       <Faqs />
+      <CTA />
     </main>
   );
 }
