@@ -9,6 +9,21 @@ import stream from "@/public/icons/stream.svg"
 import { Element } from 'react-scroll'
 
 
+
+/**
+ * HowItWorks component renders a section that visually describes the three-step process
+ * for setting up and managing payroll with Strimz. 
+ *
+ * The section includes:
+ * - A main heading and a subheading that introduce the concept.
+ * - Three grid columns, each representing a step with an icon, title, and description:
+ *   1. Setup Your Payroll: Name the payroll, choose a token, and set payment frequency.
+ *   2. Add Your Team: Upload employee details for automatic payment setups.
+ *   3. Stream Payments Automatically: Automate scheduled payments and monitor transactions.
+ *
+ * The component is styled to be fully responsive, ensuring a seamless viewing experience across devices.
+ */
+
 const HowItWorks = () => {
     return (
         <Element name='howitworks'>

@@ -3,6 +3,16 @@ import Link from 'next/link'
 import React from 'react'
 import utilityPay from "@/public/images/utility.png"
 
+/**
+ * Utility component renders a section that explains how Strimz can be used to pay
+ * for utility bills, streaming services, and mobile data without manual transactions.
+ *
+ * The component consists of a heading, a paragraph, a link, and an image area with
+ * an illustration.
+ *
+ * The component is designed to be fully responsive and centered, with padding
+ * adjustments for large screens.
+ */
 const Utility = () => {
     return (
         <section className="w-full bg-[#F3F4F6] md:py-20 lg:px-0 py-6 px-6">

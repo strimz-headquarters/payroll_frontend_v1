@@ -2,6 +2,16 @@ import React from 'react'
 import { Element } from 'react-scroll'
 import AllPlans from './allPlans'
 
+/**
+ * Pricings component renders a section that displays Strimz's pricing plans.
+ *
+ * It is an Element with the name "pricing" and contains a heading and a paragraph
+ * describing the benefits of using Strimz, and an AllPlans component that renders
+ * the different pricing plans.
+ *
+ * The component is designed to be fully responsive and centered, with padding
+ * adjustments for large screens.
+ */
 const Pricings = () => {
     return (
         <Element name='pricing'>

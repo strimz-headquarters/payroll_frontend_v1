@@ -4,6 +4,19 @@ import React from 'react'
 import security from "@/public/images/security.png"
 import PaddedLines from '../herosection/paddedLines'
 
+/**
+ * Renders a section that highlights the benefits of using Strimz.
+ * 
+ * It consists of a heading and an unordered list with three items,
+ * each with a checkmark and a description of a benefit:
+ * - On-Chain Transactions, for full transparency.
+ * - Non-Custodial, for control over funds.
+ * - Reliable Smart Contracts, for no manual intervention, no delays, no errors.
+ * 
+ * The section is fully responsive and centered, with padding adjustments for large screens.
+ * 
+ * @returns A JSX element representing the BuiltForTrust section.
+ */
 const BuiltForTrust = () => {
     return (
         <>

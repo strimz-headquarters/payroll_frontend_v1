@@ -11,6 +11,13 @@ import { PlansType } from '@/types/guestpage';
 import { plans } from '@/utils/pricingPlans';
 import { Badge } from '@/components/ui/badge';
 
+/**
+ * AllPlans
+ *
+ * A component that renders all the pricing plans.
+ *
+ * @returns {React.ReactElement} A react element that renders all the pricing plans.
+ */
 const AllPlans = () => {
     return (
         <main className="w-full flex flex-col items-center mt-8">
