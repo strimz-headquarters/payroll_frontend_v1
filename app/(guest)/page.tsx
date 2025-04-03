@@ -1,5 +1,6 @@
 'use client'
 import HeroSection from "@/components/guest/herosection";
+import Utility from "@/components/guest/utilitybill";
 import Benefits from "@/components/guest/whyStrimz";
 
 /**
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="w-full overflow-x-hidden">
       <HeroSection />
       <Benefits />
+      <Utility />
     </main>
   );
 }
