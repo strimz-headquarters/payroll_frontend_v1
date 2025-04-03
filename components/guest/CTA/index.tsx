@@ -7,12 +7,24 @@ import React from 'react'
 import strimzVector from '@/public/logoIcons/StrimzVector.svg'
 import pattern from "@/public/patterns/ctaPattern.svg"
 
+/**
+ * CTA (Call-to-Action) component renders a section at the bottom of the home page 
+ * that encourages users to start automating their payroll.
+ * 
+ * The section includes:
+ * - A main heading and a subheading that introduce the concept.
+ * - A button that, when clicked, navigates to the login page.
+ * - An absolute positioned pattern that provides a dynamic background.
+ * - A logo that is animated to draw attention.
+ * 
+ * The component is designed to be fully responsive, ensuring a seamless viewing experience across devices.
+ */
 const CTA = () => {
 
     const router = useRouter()
 
     return (
-        <section className="w-full bg-primary md:py-20 py-6">
+        <section className="w-full bg-primary md:py-20 py-16">
             <main className='w-full flex flex-col items-center'>
                 <div className="w-full flex flex-col items-center gap-4 max-w-[600px] lg:px-0  px-6 mb-8">
                     <h3 className="text-white font-[700] md:text-[64px] text-[45px] md:leading-[70px] leading-[48px] font-sora text-center">

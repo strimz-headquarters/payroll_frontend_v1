@@ -20,7 +20,7 @@ import PaddedLines from '../herosection/paddedLines'
 const BuiltForTrust = () => {
     return (
         <>
-            <section className="w-full bg-primary md:py-20 lg:px-0 py-6 px-6">
+            <section className="w-full bg-primary md:py-20 lg:px-0 py-16 px-6">
                 <main className='w-full max-w-[1096px] mx-auto grid md:grid-cols-2 gap-8 md:gap-0'>
                     <div className='w-full max-w-[368px] flex flex-col justify-center items-start gap-4'>
                         <h3 className="text-white font-[700] md:text-[40px] text-[32px] md:leading-[48px] leading-[40px] font-sora">Built for trust and reliability</h3>

@@ -1,4 +1,4 @@
-import { NavLinkTypes } from "@/types/guestpage";
+import { footerLinksTypes, NavLinkTypes } from "@/types/guestpage";
 
 export const navLinks: NavLinkTypes[] = [
   {
@@ -16,5 +16,20 @@ export const navLinks: NavLinkTypes[] = [
   {
     name: "FAQs",
     to: "faqs",
+  },
+];
+
+export const footerLinks: footerLinksTypes[] = [
+  {
+    name: "Privacy policy",
+    link: "/",
+  },
+  {
+    name: "Terms of service",
+    link: "/",
+  },
+  {
+    name: "Contact us",
+    link: "mailto:strimztokenstream@gmail.com",
   },
 ];

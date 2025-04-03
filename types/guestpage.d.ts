@@ -29,3 +29,8 @@ export type FaqsTypes = {
   question: string;
   answer: string;
 };
+
+export type footerLinksTypes = {
+  name: string;
+  link: string;
+};

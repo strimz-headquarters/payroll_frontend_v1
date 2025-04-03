@@ -15,7 +15,7 @@ import utilityPay from "@/public/images/utility.png"
  */
 const Utility = () => {
     return (
-        <section className="w-full bg-[#F3F4F6] md:py-20 lg:px-0 py-6 px-6">
+        <section className="w-full bg-[#F3F4F6] md:py-20 lg:px-0 py-16 px-6">
             <main className='w-full max-w-[1096px] mx-auto grid md:grid-cols-7 gap-8 md:gap-0'>
                 <div className='w-full md:col-span-3 max-w-[368px] flex flex-col justify-center items-start gap-4'>
                     <h3 className="text-primary font-[700] md:text-[40px] text-[32px] md:leading-[48px] leading-[40px] font-sora">Pay your utility bills with strimz</h3>
