@@ -16,3 +16,11 @@ export type NavLinkTypes = {
   name: string;
   to: string;
 };
+
+export type PlansType = {
+  name: string;
+  icon: React.ReactNode;
+  monthlyPrice: number;
+  yearlyPrice: number;
+  features: string[];
+};

@@ -61,6 +61,9 @@ const config: Config = {
           "0px -4px 4px 0px rgba(0, 0, 0, 0.2) inset, 0px 4px 4px 0px rgba(225, 225, 225, 0.25) inset, 0px 0px 0px 1px rgba(2, 199, 106, 0.25)",
         ctaShadow:
           "0px -4px 4px 0px #00000033 inset, 0px 4px 4px 0px #E1E1E140 inset",
+        subCardShadow: "0px 1px 2px -1px #0000001A, 0px 1px 3px 0px #0000001A",
+        verifyMShadow:
+          "0px 2.8px 5.6px -2.8px #0000000D, 0px 5.6px 8.4px -1.4px #0000001A, 0px -2.8px 5.6px 0px #0000001A inset",
       },
     },
   },
