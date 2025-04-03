@@ -51,7 +51,7 @@ const HeroSection = () => {
             <WorldMapWithAnimatedOverlay />
 
             {/* padded lines */}
-            <PaddedLines />
+            <PaddedLines className="pt-16" />
 
             {/* Moving texts */}
             <MovingText />
