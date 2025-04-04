@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 const isProduction = process.env.NODE_ENV === "production";
 const baseUrl = isProduction
-  ? "https://www.strimz.xyz"
+  ? "https://strimz-payroll.vercel.app"
   : `http://localhost:${process.env.PORT || 3000}`;
 
 const titleTemplate = "%s | Token Streaming App";
