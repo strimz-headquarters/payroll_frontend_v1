@@ -40,6 +40,14 @@ import Link from "next/link"
 import { FiEdit, FiPause } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
+/**
+ * PausedPayroll component renders a section displaying a list of paused payrolls
+ * for contract employees. It provides functionality to view, edit, pause, or delete
+ * payrolls. The component uses a collapsible section to show detailed information
+ * about each payroll, including name, wallet address, amount, and status.
+ *
+ * @returns A JSX element representing the paused payrolls section.
+ */
 const PausedPayroll = () => {
     const [isOpen, setIsOpen] = useState(false)
 

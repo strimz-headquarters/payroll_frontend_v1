@@ -11,6 +11,15 @@ import ActivePayroll from "./ActivePayroll"
 import PausedPayroll from "./PausedPayroll"
 
 
+/**
+ * The UserPayrolls component renders a section displaying a list of payrolls
+ * for contract employees. It provides functionality to view, edit, pause, or delete
+ * payrolls. The component uses a collapsible section to show detailed information
+ * about each payroll, including name, wallet address, amount, and status.
+ *
+ * @returns A JSX element representing the payrolls section.
+ */
+
 const UserPayrolls = () => {
     const router = useRouter()
 

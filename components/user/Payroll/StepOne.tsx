@@ -33,6 +33,21 @@ interface StepOneFormProps {
     handleClick: () => void;
 }
 
+
+/**
+ * StepOneForm component renders a form for setting up payroll details.
+ * It provides fields for:
+ * - Payroll name
+ * - Token selection (USDC or USDT)
+ * - Stream frequency (Daily, Weekly, Monthly)
+ * - Stream start date
+ * - Stream start time
+ * It also includes a Next button to proceed to the second step.
+ * @param data - The data to be updated in the parent component
+ * @param setData - The function to update the data in the parent component
+ * @param handleClick - The function to handle the Next button click
+ * @returns A JSX element representing the StepOneForm
+ */
 const StepOneForm = ({ data, setData, handleClick }: StepOneFormProps) => {
 
     return (

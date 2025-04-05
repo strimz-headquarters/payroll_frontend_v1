@@ -41,6 +41,15 @@ import { FiEdit, FiPause } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 // import { format } from "date-fns";
 
+/**
+ * ActivePayroll component renders a section displaying a list of active payrolls
+ * for contract employees. It provides functionality to view, edit, pause, or delete
+ * payrolls. The component uses a collapsible section to show detailed information
+ * about each payroll, including name, wallet address, amount, and status.
+ *
+ * @returns A JSX element representing the active payrolls section.
+ */
+
 const ActivePayroll = () => {
     const [isOpen, setIsOpen] = useState(false)
 

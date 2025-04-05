@@ -22,6 +22,14 @@ import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
 import { useState } from "react";
 
+/**
+ * EditPayrollSettings component renders a section displaying a form to edit
+ * the details of a payroll. It provides functionality to update the payroll
+ * name, select token, stream frequency, start date, and payment time. The
+ * component uses a collapsible section to show the form and a button to save
+ * the changes.
+ * @returns A JSX element representing the edit payroll settings section.
+ */
 const EditPayrollSettings = () => {
     const [date, setDate] = useState<Date>()
     const router = useRouter()

@@ -6,6 +6,19 @@ import StepOneForm from "./StepOne";
 import StepTwoForm from "./StepTwo";
 import { toast } from "sonner";
 
+/**
+ * Create component renders a page for creating a new payroll.
+ *
+ * The component renders a header with a back button and a title.
+ * It also renders a form for creating a new payroll, split into two steps.
+ * The first step asks for payroll name, token, frequency, start date, and payment time.
+ * The second step renders a table with the payroll details.
+ *
+ * The component uses the `useState` hook to store the step number and the payroll data.
+ * The `isStepOneValid` function checks if the step one data is valid.
+ * The `handleNext` function sets the step number to 2 if the step one data is valid.
+ * The `handleBack` function sets the step number to 1.
+ */
 const Create = () => {
     const [step, setStep] = useState<1 | 2>(1);
     const router = useRouter()

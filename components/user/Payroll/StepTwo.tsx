@@ -43,6 +43,34 @@ interface StepTwoFormProps {
     handleClick: () => void;
 }
 
+
+/**
+ * StepTwoForm component handles the second step of the payroll creation process.
+ * It allows users to add recipient details either by importing a CSV file or manually entering data.
+ *
+ * Props:
+ * - data: Contains step one data including payroll name, token, frequency, start date, and payment time.
+ * - handleClick: Function to handle the back button click event.
+ *
+ * State:
+ * - csvData: Stores data imported from a CSV file.
+ * - error: Stores error messages related to CSV data validation.
+ * - tableData: Stores the recipient data to be displayed in the table.
+ * - zoneHover: Indicates if the CSV import zone is being hovered over.
+ * - isSending: Indicates if the form submission is in progress.
+ *
+ * Functions:
+ * - validateCSVData: Validates the imported CSV data for required fields and formats.
+ * - addNewRecord: Adds a new editable row to the recipient table.
+ * - updateRow: Updates a specific field of a recipient row.
+ * - toggleEdit: Toggles the edit mode for a specific recipient row.
+ * - removeRow: Removes a recipient row from the table.
+ * - handleSubmit: Handles form submission, prepares the request payload, and navigates to the payroll page on success.
+ *
+ * The component uses react-table to render the recipient table with columns for name, wallet address, amount, and actions.
+ * It also includes a CSV import dialog and buttons for navigation and submission.
+ */
+
 const StepTwoForm = ({ data: StepOneData, handleClick }: StepTwoFormProps) => {
     const [csvData, setCsvData] = useState<CVSDataType[]>([]);
     const [error, setError] = useState<string | null>(null);
