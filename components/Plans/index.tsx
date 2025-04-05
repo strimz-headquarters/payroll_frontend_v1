@@ -55,7 +55,7 @@ const Plans = () => {
                 <h3 className="font-[700] font-sora text-strimzPrimary md:text-[32px] md:leading-[36px] text-[28px] leading-[28px]">Choose your plan</h3>
                 <p className="lg:w-[40%] md:w-[55%] w-full px-3 md:px-0 mt-2 font-[400] font-poppins text-[#58556A] text-[14px] leading-[24px] text-center">Unlock the tools you need to simplify payments and scale your operations. Start free or upgrade for advanced features</p>
 
-                <main className="w-full flex flex-col items-center mt-8">
+                <main className="w-full flex flex-col items-center mt-8 lg:px-10 md:px-16 px-6">
                     <Tabs defaultValue="monthly" className="w-full flex flex-col items-center">
                         <TabsList className="md:w-[400px] w-[85%] grid grid-cols-2 mb-3">
                             <TabsTrigger value="monthly">Monthly</TabsTrigger>

@@ -23,10 +23,10 @@ const UserPayrolls = () => {
                 </div>
 
 
-                <button type="button" onClick={() => router.push("/user/payroll/create")} className='w-[151px] mt-4 h-[38px] flex justify-center gap-1 items-center rounded-[8px] bg-strimzBrandAccent text-[#FFFFFF] font-poppins font-[600] shadow-joinWaitlistBtnShadow z-10 text-shadow text-[12px]'>
-                        <GoPlus className="w-4 h-4 font-bold" />
-                        Create payroll
-                    </button>
+                <button type="button" onClick={() => router.push("/user/payroll/create")} className='w-[151px] mt-4 h-[38px] flex justify-center gap-1 items-center rounded-[8px] bg-accent text-[#FFFFFF] font-poppins font-[600] shadow-joinWaitlistBtnShadow z-10 text-shadow text-[12px]'>
+                    <GoPlus className="w-4 h-4 font-bold" />
+                    Create payroll
+                </button>
             </div>
 
             {/* no payrolls */}
@@ -46,19 +46,19 @@ const UserPayrolls = () => {
 
 
             <main className="w-full mt-4">
-                    <Tabs defaultValue="activepayroll" className="w-full">
-                        <TabsList className="w-auto bg-[#F9FAFB] justify-start ">
-                            <TabsTrigger className="px-3" value="activepayroll">Active payroll</TabsTrigger>
-                            <TabsTrigger className="px-3 py-2" value="pausedpayroll">Paused payroll</TabsTrigger>
+                <Tabs defaultValue="activepayroll" className="w-full">
+                    <TabsList className="w-auto bg-[#F9FAFB] justify-start ">
+                        <TabsTrigger className="px-3" value="activepayroll">Active payroll</TabsTrigger>
+                        <TabsTrigger className="px-3 py-2" value="pausedpayroll">Paused payroll</TabsTrigger>
 
-                        </TabsList>
-                        <TabsContent value="activepayroll" className="mt-8 w-full">
-                            <ActivePayroll />
-                        </TabsContent>
-                        <TabsContent value="pausedpayroll" className="mt-8 w-full">
-                            <PausedPayroll />
-                        </TabsContent>
-                    </Tabs>
+                    </TabsList>
+                    <TabsContent value="activepayroll" className="mt-8 w-full">
+                        <ActivePayroll />
+                    </TabsContent>
+                    <TabsContent value="pausedpayroll" className="mt-8 w-full">
+                        <PausedPayroll />
+                    </TabsContent>
+                </Tabs>
             </main>
 
         </section>

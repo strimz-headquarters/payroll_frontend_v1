@@ -103,10 +103,12 @@ const FormInputs = () => {
         try {
 
             console.log(otp);
-            toast.success("user verified", {
-                position: "top-right",
-            })
-            router.push("/plans");
+            if (otp === "1234") {
+                toast.success("user verified", {
+                    position: "top-right",
+                })
+                router.push("/plans");
+            }
 
         } catch (error: any) {
             console.error(error);

@@ -13,7 +13,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Logo from "@/components/shared/Logo";
-import StrimzLogo from "@/public/logo/logo.png"
+import StrimzLogo from "@/public/logo/blueLogo.png"
 import { SignupFormInputValues } from "@/types/auth";
 
 /**

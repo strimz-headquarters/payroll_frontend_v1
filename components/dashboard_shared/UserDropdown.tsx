@@ -20,8 +20,6 @@ import { MdOutlinePayment } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 
 
-
-
 /**
  * A dropdown menu for the user to access their account settings.
  *

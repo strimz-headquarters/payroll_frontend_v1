@@ -197,7 +197,7 @@ const ActivePayroll = () => {
                                         <TableCell className="text-nowrap text-[#8E8C9C] text-sm font-poppins font-[400]">{payroll.walletAddress}</TableCell>
                                         <TableCell className="text-nowrap text-[#8E8C9C] text-sm font-poppins font-[400]">{payroll.amount}</TableCell>
                                         <TableCell className="text-nowrap text-[#8E8C9C] text-sm font-poppins font-[400]">
-                                            <span className="rounded-[8px] bg-[#FDFDEA] px-2 py-1 text-[#723B13]">
+                                            <span className="rounded-[8px] bg-[#F5FFFA] px-2 py-1 text-[#01753E]">
                                                 {payroll.status}
                                             </span>
                                         </TableCell>

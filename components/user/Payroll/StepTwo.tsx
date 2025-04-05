@@ -267,7 +267,7 @@ const StepTwoForm = ({ data: StepOneData, handleClick }: StepTwoFormProps) => {
                                 Import CSV
                             </button>
                         </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
+                        <DialogContent className="sm:max-w-[425px]" aria-describedby="modal-content">
                             <DialogHeader>
                                 <DialogTitle className="flex items-center gap-2">
                                     <span className="w-[40px] h-[40px] flex justify-center items-center bg-white border-[0.5px] border-[#E5E7EB] shadow-[0px_1px_2px_0px_#00000014] rounded-full">
@@ -310,8 +310,8 @@ const StepTwoForm = ({ data: StepOneData, handleClick }: StepTwoFormProps) => {
                                     }: any) => (
                                         <div
                                             {...getRootProps()}
-                                            className={`flex h-[200px] mt-2 flex-col items-center justify-center border-2 border-dashed rounded-lg p-6 transition-all duration-300 ${zoneHover ? "border-accent bg-[#F9FAFB]" : "border-[#E5E7EB] bg-[#F9FAFB]"
-                                                }`}
+                                            className={`flex h-[200px] mt-2 flex-col items-center justify-center border-2 border-dashed rounded-lg p-6 transition-all duration-300 ${zoneHover ? "border-accent bg-[#F9FAFB]" : "border-[#E5E7EB] bg-[#F9FAFB]"}`
+                                            }
                                         >
                                             {acceptedFile ? (
                                                 <>
