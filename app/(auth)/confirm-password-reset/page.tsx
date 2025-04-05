@@ -5,6 +5,19 @@ import authPattern from "@/public/patterns/authPattern.png"
 import authPattern2 from "@/public/patterns/authPattern2.png"
 import Image from "next/image";
 
+/**
+ * Renders the Confirm Password Reset page layout.
+ *
+ * This page is divided into two main sections:
+ * 1. A hidden on mobile, visible on larger screens side section that provides
+ *    branding and information about the service.
+ * 2. The main section that displays the ConfirmPasswordResetEmail component,
+ *    inviting users to check their email for password reset instructions.
+ *
+ * The design includes responsive styling for different screen sizes and
+ * backgrounds with patterns for visual interest.
+ */
+
 export default function ConfirmPasswordReset() {
     return (
         <main className="w-full min-h-screen grid md:grid-cols-8 px-5 md:px-0">

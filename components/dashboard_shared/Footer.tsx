@@ -2,6 +2,14 @@
 import { useEffect, useState } from "react"
 
 
+/**
+ * Footer is a functional component that renders the footer section for the dashboard.
+ * 
+ * The component renders a centered paragraph with the current year and a copyright notice.
+ * The year is updated dynamically using the useEffect hook.
+ * 
+ * @returns {JSX.Element} A section element that wraps the footer.
+ */
 const Footer = () => {
     const [year, setYear] = useState('')
 

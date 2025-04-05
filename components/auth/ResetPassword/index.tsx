@@ -10,6 +10,16 @@ import { useState } from "react";
 import * as Yup from "yup";
 import { EmailInputValues } from "@/types/auth";
 
+/**
+ * Renders a form for resetting the user's password.
+ *
+ * The form includes an icon, a title, a description, input fields for the email,
+ * and a button to submit the form. There is also a back button to navigate to the
+ * previous page.
+ *
+ * @returns A JSX element representing the reset password form.
+ */
+
 const ResetPasswordForm = () => {
     const router = useRouter()
     return (
@@ -35,6 +45,22 @@ const ResetPasswordForm = () => {
 
 export default ResetPasswordForm
 
+
+/**
+ * FormInputs component renders a login form using Formik.
+ * It includes fields for email with validation,
+ * and provides options to reset the password, and login with Google.
+ * The form displays error messages and shows a loading indicator during submission.
+ * 
+ * State:
+ * - isSending: Indicates if the form submission is in progress.
+ * 
+ * Formik:
+ * - initialValues: Default values for form fields.
+ * - validationSchema: Validation rules for email.
+ * - onSubmit: Handles form submission, simulates a login process, 
+ *   and navigates to the user page on success.
+ */
 
 const FormInputs = () => {
     const [isSending, setIsSending] = useState<boolean>(false);

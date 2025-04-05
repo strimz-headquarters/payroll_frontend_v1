@@ -11,6 +11,16 @@ import { TbLockPassword } from 'react-icons/tb'
 import { useRouter } from "next/navigation";
 import { PasswordInputValues } from "@/types/auth";
 
+/**
+ * Renders a form for setting a new password. 
+ *
+ * This component displays a card with a lock icon, a title, 
+ * and a prompt to set a strong password. It includes the 
+ * FormInputs component for user input.
+ *
+ * @returns A JSX element representing the new password form.
+ */
+
 const SetNewPasswordForm = () => {
     return (
         <div className="shadow-authCardShadow md:w-[380px] w-full rounded-[16px] bg-white border border-[#E5E7EB] flex flex-col gap-4 items-center py-8 px-6 relative">
@@ -30,6 +40,24 @@ const SetNewPasswordForm = () => {
 
 export default SetNewPasswordForm
 
+
+/**
+ * FormInputs component renders a form for setting a new password using Formik.
+ * It includes a password field with validation rules, a toggle button to show
+ * or hide the password, and a submit button to create the new password.
+ * Displays error messages for validation issues and shows a loading indicator 
+ * during form submission.
+ * 
+ * State:
+ * - isSending: Indicates if the form submission is in progress.
+ * - showPassword: Toggles password visibility.
+ * 
+ * Formik:
+ * - initialValues: Default value for the password field.
+ * - validationSchema: Validation rules for the password.
+ * - onSubmit: Handles form submission, simulates password creation, and navigates
+ *   to the login page on success.
+ */
 
 const FormInputs = () => {
     const [isSending, setIsSending] = useState<boolean>(false);

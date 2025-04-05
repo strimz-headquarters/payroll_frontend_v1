@@ -1,6 +1,14 @@
 import { BsEnvelope } from "react-icons/bs"
 
 
+/**
+ * Renders a card that displays a success message after a user has submitted the reset password form.
+ *
+ * It displays an envelope icon and a message that tells the user to check their email
+ * for instructions to reset their password.
+ *
+ * @returns A JSX element representing the card.
+ */
 const ConfirmPasswordResetEmail = () => {
     return (
         <div className="shadow-authCardShadow md:w-[380px] w-full rounded-[16px] bg-white border border-[#E5E7EB] flex flex-col gap-4 items-center py-8 px-6 relative">

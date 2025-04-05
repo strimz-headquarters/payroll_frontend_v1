@@ -8,6 +8,21 @@ import StrimzLogo from "@/public/logo/blueLogo.png"
 import { SideBarLinks } from "@/utils/sideBarLinks";
 import { SideBarLinksTypes } from "@/types/dashboard";
 
+/**
+ * The SideBar component renders a collapsible sidebar for the dashboard.
+ * 
+ * Props:
+ * - `sidebarOpen`: A boolean that indicates whether the sidebar is open or closed.
+ * - `setSidebarOpen`: A function to toggle the `sidebarOpen` state.
+ * 
+ * The component includes:
+ * - A header with a logo linking to the user's homepage and a toggle button for mobile view.
+ * - A navigation menu with links to different sections, which are highlighted based on the current pathname.
+ * - A footer with an upgrade button redirecting to the plan upgrade page.
+ * 
+ * The sidebar's visibility affects the document's scroll behavior.
+ */
+
 const SideBar = ({
     sidebarOpen,
     setSidebarOpen,

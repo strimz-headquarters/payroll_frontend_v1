@@ -5,6 +5,21 @@ import authPattern from "@/public/patterns/authPattern.png"
 import authPattern2 from "@/public/patterns/authPattern2.png"
 import Image from "next/image";
 
+/**
+ * Renders the reset password page layout.
+ *
+ * The page is divided into two sections:
+ * 1. A left section that is visible on medium to large screens, which includes 
+ *    the Strimz logo, a heading, a subheading, and decorative background patterns.
+ * 2. A right section that contains the `ResetPasswordForm` component, which allows 
+ *    users to enter their email to reset their password.
+ *
+ * The layout is responsive, with the left section being hidden on smaller screens,
+ * and the right section occupying the full width.
+ *
+ * @returns A JSX element representing the reset password page.
+ */
+
 export default function ResetPassword() {
     return (
         <main className="w-full min-h-screen grid md:grid-cols-8 px-5 md:px-0">

@@ -18,6 +18,15 @@ import { LoginFormInputValues } from "@/types/auth";
 
 
 
+/**
+ * Renders a login form that includes a logo, a heading, and a form
+ * with fields for email and password.
+ *
+ * The form is wrapped in a container with a shadow, and the logo is
+ * fixed at the top of the screen on mobile devices.
+ *
+ * @returns A JSX element representing the login form.
+ */
 const LoginForm = () => {
     return (
         <>
@@ -27,7 +36,6 @@ const LoginForm = () => {
 
             <div className="shadow-authCardShadow md:w-[380px] w-full rounded-[16px] bg-white border border-[#E5E7EB] flex flex-col items-center py-8 px-6">
                 <h4 className="font-[600] font-sora text-primary text-center text-lg">Login to Strimz</h4>
-
                 <FormInputs />
             </div>
         </>
@@ -36,7 +44,23 @@ const LoginForm = () => {
 
 export default LoginForm
 
-
+/**
+ * FormInputs component renders a login form using Formik.
+ * It includes fields for email and password with validation,
+ * and provides options to toggle password visibility, reset 
+ * the password, and login with Google. The form displays 
+ * error messages and shows a loading indicator during submission.
+ * 
+ * State:
+ * - isSending: Indicates if the form submission is in progress.
+ * - showPassword: Toggles password visibility.
+ * 
+ * Formik:
+ * - initialValues: Default values for form fields.
+ * - validationSchema: Validation rules for email and password.
+ * - onSubmit: Handles form submission, simulates a login process, 
+ *   and navigates to the user page on success.
+ */
 const FormInputs = () => {
     const [isSending, setIsSending] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);

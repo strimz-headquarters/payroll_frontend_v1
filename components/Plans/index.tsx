@@ -14,19 +14,23 @@ import StrimzLogo from "@/public/logo/blueLogo.png"
 import { Badge } from "../ui/badge";
 import { PlansType } from "@/types/guestpage";
 
+/**
+ * The Plans component renders a pricing page.
+ *
+ * The component renders a header with a logo and a sign out button.
+ * It also renders a section with a heading and a paragraph, and a main section with a tabs component.
+ *
+ * The tabs component renders two tabs, one for monthly and one for yearly plans.
+ * Each tab renders a section with a grid of plans, with each plan rendered as a div with a class of "h-[420px] rounded-[16px] border border-[#E5E7EB] bg-[#F9FAFB] cursor-pointer transition-all duration-200 group hover:bg-primary shadow-subCardShadow flex flex-col justify-between p-6 relative".
+ * Each plan renders an icon, a heading, a paragraph, a list of features, and a button.
+ *
+ * The button is a Next.js Link component that links to the user page.
+ *
+ * The component also renders a badge component on the recommended plan.
+ *
+ * @returns {JSX.Element} The plans page component.
+ */
 const Plans = () => {
-
-    // const handlePlansFetch = useCallback(async () => {
-    //     try {
-
-    //     } catch (error: any) {
-    //         console.error( error);
-    //     }
-    // }, [])
-
-    // useEffect(() => {
-    //     handlePlansFetch()
-    // }, [handlePlansFetch])
 
     const router = useRouter()
     const handleClick = () => {

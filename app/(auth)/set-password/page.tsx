@@ -5,6 +5,16 @@ import authPattern from "@/public/patterns/authPattern.png"
 import authPattern2 from "@/public/patterns/authPattern2.png"
 import Image from "next/image";
 
+/**
+ * A page for setting a new password.
+ *
+ * The page displays a grid layout. On large screens, the left column displays
+ * the Strimz logo, a heading, a subheading, and a background pattern. The right
+ * column displays the SetNewPasswordForm component.
+ *
+ * The page is fully responsive, ensuring a seamless viewing experience across
+ * devices.
+ */
 export default function SetNewPassword() {
     return (
         <main className="w-full min-h-screen grid md:grid-cols-8 px-5 md:px-0">

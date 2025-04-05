@@ -5,6 +5,16 @@ import authPattern from "@/public/patterns/authPattern.png"
 import authPattern2 from "@/public/patterns/authPattern2.png"
 import Image from "next/image";
 
+/**
+ * A page for users to sign up.
+ *
+ * The page displays a grid layout. On large screens, the left column displays
+ * the Strimz logo, a heading, a subheading, and a background pattern. The right
+ * column displays the SignupForm component.
+ *
+ * The design includes responsive styling for different screen sizes and
+ * backgrounds with patterns for visual interest.
+ */
 export default function UserSignup() {
     return (
         <main className="w-full min-h-screen grid md:grid-cols-8 px-5 md:px-0">

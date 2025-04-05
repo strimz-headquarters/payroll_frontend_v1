@@ -8,6 +8,17 @@ import { CiWallet } from "react-icons/ci";
 import { IoCopyOutline } from "react-icons/io5";
 import { toast } from "sonner";
 
+/**
+ * The Header component renders the topmost navigation bar for the dashboard.
+ * It receives two props: `sidebarOpen` and `setSidebarOpen`.
+ * `sidebarOpen` is a boolean that determines whether the sidebar is open or closed.
+ * `setSidebarOpen` is a function that toggles the `sidebarOpen` state.
+ *
+ * The component renders a horizontal bar with a logo on the left, a user dropdown on the right, and a hamburger toggle button on the left (only visible on mobile devices).
+ * The hamburger toggle button is used to open or close the sidebar when clicked.
+ * The user dropdown displays the user's name and wallet address.
+ * The component also renders a copy button next to the wallet address, which copies the address to the clipboard when clicked.
+ */
 const Header = ({
     sidebarOpen,
     setSidebarOpen,

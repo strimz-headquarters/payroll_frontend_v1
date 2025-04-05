@@ -4,6 +4,17 @@ import Header from "@/components/dashboard_shared/Header";
 import SideBar from "@/components/dashboard_shared/SideBar";
 import { useState } from "react";
 
+/**
+ * The UserLayout component renders the layout for the user dashboard.
+ * It includes a sidebar, a header, and a main content area.
+ * The sidebar is collapsible and can be toggled by clicking on the hamburger
+ * button in the header.
+ * The main content area is a scrollable container that contains the
+ * content of the currently active page.
+ * The Footer component is rendered at the bottom of the page.
+ * @param {React.ReactNode} children - The content to be rendered within the main section.
+ * @returns {JSX.Element} The user layout component.
+ */
 export default function UserLayout({
     children,
 }: Readonly<{

@@ -20,6 +20,25 @@ import { MdOutlinePayment } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 
 
+
+
+/**
+ * A dropdown menu for the user to access their account settings.
+ *
+ * The menu is rendered as a `DropdownMenu` component from `@radix-ui/react-dropdown-menu`, which provides a full-screen backdrop and a dropdown menu that slides in from the top of the page.
+ *
+ * The menu content is a `DropdownMenuContent` component from `@radix-ui/react-dropdown-menu`, which renders a container with a heading and a list of menu items.
+ *
+ * The menu items are rendered as `DropdownMenuItem` components from `@radix-ui/react-dropdown-menu`, which render a link or a button with an icon and a label.
+ *
+ * The menu items are grouped into a `DropdownMenuGroup` component, which renders a container with a heading and a list of menu items.
+ *
+ * The menu is triggered by a `DropdownMenuTrigger` component from `@radix-ui/react-dropdown-menu`, which renders a button or a link that toggles the visibility of the menu.
+ *
+ * The menu is closed automatically when the user clicks on a menu item.
+ *
+ * @returns {JSX.Element} The user dropdown menu.
+ */
 const UserDropdown: React.FC = () => {
     const router = useRouter()
 

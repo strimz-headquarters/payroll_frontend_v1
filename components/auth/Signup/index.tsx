@@ -16,6 +16,15 @@ import Logo from "@/components/shared/Logo";
 import StrimzLogo from "@/public/logo/logo.png"
 import { SignupFormInputValues } from "@/types/auth";
 
+/**
+ * Renders a sign up form that includes a logo, a heading, and a form
+ * with fields for email, password, and confirm password.
+ *
+ * The form is wrapped in a container with a shadow, and the logo is
+ * fixed at the top of the screen on mobile devices.
+ *
+ * @returns A JSX element representing the sign up form.
+ */
 const SignupForm = () => {
     return (
         <>
@@ -35,6 +44,23 @@ const SignupForm = () => {
 export default SignupForm
 
 
+/**
+ * FormInputs component renders a signup form using Formik.
+ * It includes fields for username, email, password, and confirm password.
+ * The form displays error messages and shows a loading indicator during submission.
+ * 
+ * State:
+ * - isSending: Indicates if the form submission is in progress.
+ * - showPassword: Toggles password visibility.
+ * 
+ * Formik:
+ * - initialValues: Default values for form fields.
+ * - validationSchema: Validation rules for username, email, password, and confirm password.
+ * - onSubmit: Handles form submission, simulates a login process, 
+ *   and navigates to the user page on success.
+ * 
+ * @returns A JSX element representing the signup form.
+ */
 const FormInputs = () => {
     const [isSending, setIsSending] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);

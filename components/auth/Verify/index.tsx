@@ -14,6 +14,15 @@ import { RxCaretLeft } from "react-icons/rx";
 import { toast } from "sonner"
 
 
+/**
+ * Renders a form for verifying an email address.
+ *
+ * The form displays an envelope icon and a message that tells the user to check their email
+ * for instructions to verify their email address. It also includes the FormInputs component
+ * for user input and a button to resend the verification email.
+ *
+ * @returns A JSX element representing the verification form.
+ */
 const VerificationForm = () => {
     const router = useRouter()
     const [user, setUser] = useState<{ email?: string }>({});
@@ -75,6 +84,15 @@ const VerificationForm = () => {
 
 export default VerificationForm
 
+/**
+ * Renders a form for the user to enter a verification code sent to their email.
+ * The form is an input with a length of 4, and it only accepts digits and letters.
+ * When the user enters a valid code, the form calls the validateOTP function to
+ * verify the code. If the verification is successful, the user is redirected to
+ * the plans page.
+ *
+ * @returns A JSX element representing the verification form.
+ */
 const FormInputs = () => {
     const [value, setValue] = useState("")
     const [isLoading, setIsLoading] = useState(false)

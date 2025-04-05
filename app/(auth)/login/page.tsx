@@ -5,6 +5,20 @@ import authPattern from "@/public/patterns/authPattern.png"
 import authPattern2 from "@/public/patterns/authPattern2.png"
 import Image from "next/image";
 
+/**
+ * A login page for users.
+ *
+ * The page has a grid layout. On large screens, the left column displays the Strimz logo,
+ * a heading, and a subheading. The right column displays the login form.
+ *
+ * The login form is rendered by the `LoginForm` component. The form is placed in the
+ * center of the page, both horizontally and vertically.
+ *
+ * The page also includes two background patterns that are displayed as absolute positioned
+ * elements. The patterns are displayed below the logo and the login form respectively.
+ *
+ * The page is fully responsive, ensuring a seamless viewing experience across devices.
+ */
 export default function UserLogin() {
     return (
         <main className="w-full min-h-screen grid md:grid-cols-8 px-5 md:px-0">
