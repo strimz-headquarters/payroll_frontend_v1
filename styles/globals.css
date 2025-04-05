@@ -81,3 +81,31 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.text-shadow {
+  text-shadow: 0px 0.5px 1px 0px #018d4b;
+}
+
+.no-scrollbar::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.alertGradient {
+  background: linear-gradient(90deg, #05214d 0%, #0d705f 50%, #05214d 100%);
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  color: #8e8c9c !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
