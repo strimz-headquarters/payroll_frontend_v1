@@ -70,10 +70,10 @@ const UserDashboardHome = () => {
         <section className="w-full flex flex-col gap-3">
             <Alert />
 
-            <main className="w-full bg-[#F9FAFB] rounded-[16px] lg:h-[219px] p-4 flex flex-col gap-1.5">
+            <main className="w-full bg-[#F9FAFB] rounded-[16px] p-4 flex flex-col gap-1.5">
                 <h2 className="text-primary font-[500] font-poppins text-sm">Overview</h2>
                 {/* balance */}
-                <div className="w-full lg:h-[159px] h-auto p-5 flex flex-col lg:justify-between rounded-[12px] bg-white shadow-[0px_1px_2px_0px_#00000014]">
+                <div className="w-full h-auto p-5 flex flex-col lg:justify-between rounded-[12px] bg-white shadow-[0px_1px_2px_0px_#00000014]">
                     <div className='w-full grid lg:grid-cols-3 grid-cols-2 gap-4 lg:gap-0'>
 
                         {/* USDC */}
@@ -110,14 +110,18 @@ const UserDashboardHome = () => {
                         </div>
                     </div>
                     {/* fund & withdraw */}
-                    <div className="flex gap-4 mt-4 lg:mt-0">
+                    <div className="flex gap-4 mt-6 ">
                         <div className="flex gap-1.5 items-center">
+                            <span className="text-[14px] capitalize text-[#58556A] font-poppins font-[500]">Wallet Address:</span>
                             <CiWallet className="w-4 h-4" />
                             <p className="text-base capitalize text-[#58556A] font-poppins font-[400]">{shortenAddress}</p>
                             <button type="button" onClick={handleCopy} className="text-[#58556A]">
                                 <IoCopyOutline className="w-4 h-4" />
                             </button>
                         </div>
+
+                    </div>
+                    <div className="flex gap-4 mt-4">
                         <FundWallet />
                         <Withdraw />
                     </div>
