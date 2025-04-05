@@ -2,6 +2,14 @@ import Image from "next/image"
 import { FaCheck } from "react-icons/fa"
 import authPattern2 from "@/public/patterns/authPattern2.png"
 
+/**
+ * A component that renders an alert with a checklist of steps to get started with Strimz.
+ *
+ * The alert has a white background and a gradient that transitions from a light blue to a darker blue.
+ * The checklist is rendered as a list with three items, each with a white background and a light blue checkmark.
+ * The items are separated by a small gap.
+ * The alert also contains an image of a pattern at the bottom right corner.
+ */
 const Alert = () => {
     return (
         <div className={`w-full flex flex-col relative bg-primary alertGradient rounded-[12px] p-4 overflow-hidden`}>

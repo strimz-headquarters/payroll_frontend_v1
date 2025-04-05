@@ -19,6 +19,19 @@ import usdcIcon from "@/public/brands/USDC.svg"
 import usdtIcon from "@/public/brands/USDT.svg"
 import Image from "next/image";
 
+/**
+ * Withdraw is a dialog component that facilitates the process of withdrawing funds from a wallet.
+ * It includes a button to trigger the dialog, a form to select a token type and enter an amount,
+ * and a confirmation button to proceed with the withdrawal.
+ * 
+ * The dialog consists of:
+ * - A header with a title indicating the withdrawal process.
+ * - A body with a select input for choosing a token (USDC or USDT) and an input field for entering the withdrawal amount.
+ * - A footer with a button to confirm and execute the withdrawal.
+ * 
+ * The component uses a modal dialog structure to ensure a focused user experience.
+ */
+
 const Withdraw = () => {
     return (
         <Dialog>

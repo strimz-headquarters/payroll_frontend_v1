@@ -13,6 +13,22 @@ import { CiWallet } from 'react-icons/ci'
 import { IoCopyOutline } from 'react-icons/io5'
 import { toast } from 'sonner'
 
+/**
+ * UserDashboardHome component renders the main dashboard interface for the user.
+ * It displays an overview of the user's USDC and USDT balances, total payout,
+ * and provides options to fund and withdraw from the wallet.
+ * 
+ * The component retrieves the user's wallet address from local storage on mount
+ * and provides functionality to copy the address to the clipboard. It also
+ * shortens the address for display purposes. The component consists of the following sections:
+ * 
+ * - Overview: Displays the user's balance for USDC, USDT, and total payout.
+ * - Wallet Address: Shows the shortened wallet address with a copy button.
+ * - Fund & Withdraw: Allows the user to fund and withdraw from their wallet.
+ * 
+ * Additionally, the component includes an Alert and a TransactionSummary component.
+ */
+
 const UserDashboardHome = () => {
     const [user, setUser] = useState<{ address?: `0x${string}` }>({});
 

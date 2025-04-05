@@ -3,6 +3,14 @@ import WalletFundTx from "../TxHistory/WalletFundTx"
 import PayrollTx from "../TxHistory/PayrollTx"
 
 
+/**
+ * TransactionSummary component renders a section with a summary of the user's recent transactions.
+ *
+ * The component displays information about the user's recent transactions, including the date, amount,
+ * token type, and transaction status. The component also includes a link to the user's transaction history.
+ *
+ * @returns {React.ReactElement} A styled component displaying the user's recent transactions.
+ */
 const TransactionSummary = () => {
     return (
         <section className="w-full flex flex-col gap-3 mt-4">

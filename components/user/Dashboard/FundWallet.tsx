@@ -19,6 +19,14 @@ import usdcIcon from "@/public/brands/USDC.svg"
 import usdtIcon from "@/public/brands/USDT.svg"
 import Image from "next/image";
 
+/**
+ * FundWallet is a dialog component that allows users to fund their wallet.
+ * It prompts the user to select a token and enter an amount.
+ * The component renders a dialog with a header, body and footer.
+ * The header contains a title and a close button.
+ * The body contains a select input for the token and an input for the amount.
+ * The footer contains a fund wallet button.
+ */
 const FundWallet = () => {
 
     return (
