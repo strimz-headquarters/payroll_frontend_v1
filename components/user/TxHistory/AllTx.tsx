@@ -2,6 +2,14 @@ import WalletFundTx from "./WalletFundTx"
 import PayrollTx from "./PayrollTx"
 import WithdrawalTx from "./WithdrawalTx"
 
+/**
+ * AllTx component renders a section with all the different types of transactions.
+ *
+ * The component renders all the different types of transactions, including wallet funding,
+ * payroll, and withdrawal transactions.
+ *
+ * @returns {React.ReactElement} A section with all the different types of transactions.
+ */
 const AllTx = () => {
     return (
         <section className="w-full flex flex-col gap-2">

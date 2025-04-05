@@ -4,6 +4,15 @@ import { TxPropsTypes } from "@/types/dashboard";
 import Image from "next/image";
 import { GoArrowUpRight } from "react-icons/go";
 
+/**
+ * WithdrawalTx component renders a transaction with a withdrawal type.
+ *
+ * The component renders a withdrawal transaction with the given title, date,
+ * amount, token, and status.
+ *
+ * @param {{ title: string, date: string, amount: string, token: "USDC" | "USDT", status: "Completed" | "Failed" | "In progress" }} props
+ * @returns {React.ReactElement} A transaction with a withdrawal type.
+ */
 const WithdrawalTx = ({ title, date, amount, token, status }: TxPropsTypes) => {
     return (
         <main className="w-full flex justify-between items-center cursor-pointer hover:bg-[#F9FAFB] transition-all px-2 py-2 rounded-[8px]">

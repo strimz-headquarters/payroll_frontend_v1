@@ -4,6 +4,23 @@ import { TxPropsTypes } from "@/types/dashboard";
 import Image from "next/image";
 import { GoArrowDownRight } from "react-icons/go";
 
+/**
+ * WalletFundTx component renders a transaction item representing a wallet funding operation.
+ *
+ * The component displays information about a wallet funding transaction, including the title,
+ * date, amount, token type, and transaction status. It includes an icon representing the token
+ * type and changes background color on hover for better user interaction.
+ *
+ * Props:
+ * @param {string} title - The title of the transaction.
+ * @param {string} date - The date and time of the transaction.
+ * @param {string} amount - The amount involved in the transaction.
+ * @param {"USDC" | "USDT"} token - The type of token used in the transaction.
+ * @param {"Completed" | "Failed" | "In progress"} status - The status of the transaction.
+ *
+ * @returns {React.ReactElement} A styled component displaying transaction details.
+ */
+
 const WalletFundTx = ({ title, date, amount, token, status }: TxPropsTypes) => {
     return (
         <main className="w-full flex justify-between items-center cursor-pointer hover:bg-[#F9FAFB] transition-all px-2 py-2 rounded-[8px]">

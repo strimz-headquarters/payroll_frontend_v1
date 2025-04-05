@@ -12,6 +12,14 @@ import PayrollTx from "./PayrollTx";
 import WithdrawalTx from "./WithdrawalTx";
 import WalletFundTx from "./WalletFundTx";
 
+/**
+ * TxHistory component renders a section with all the different types of transactions.
+ *
+ * The component renders all the different types of transactions, including wallet funding,
+ * payroll, and withdrawal transactions.
+ *
+ * @returns {React.ReactElement} A section with all the different types of transactions.
+ */
 const TxHistory = () => {
     const router = useRouter()
 

@@ -5,6 +5,19 @@ import Image from "next/image";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 
 
+/**
+ * PayrollTx component displays a payroll transaction item with its details.
+ *
+ * @param {Object} props - The properties object.
+ * @param {string} props.title - The title of the transaction.
+ * @param {string} props.date - The date of the transaction.
+ * @param {string} props.amount - The amount involved in the transaction.
+ * @param {"USDC" | "USDT"} props.token - The token type used in the transaction.
+ * @param {"Completed" | "Failed" | "In progress"} props.status - The current status of the transaction.
+ *
+ * @returns A JSX element representing the payroll transaction item.
+ */
+
 const PayrollTx = ({ title, date, amount, token, status }: TxPropsTypes) => {
     return (
         <main className="w-full flex justify-between items-center cursor-pointer hover:bg-[#F9FAFB] transition-all px-2 py-2 rounded-[8px]">
