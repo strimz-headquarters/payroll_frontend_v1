@@ -9,7 +9,7 @@ import { AiOutlineDollarCircle } from 'react-icons/ai'
 import TransactionSummary from './TransactionSummary'
 import FundWallet from './FundWallet'
 import Withdraw from './Withdraw'
-import { CiWallet } from 'react-icons/ci'
+import baseIcon from "@/public/networks/base.webp"
 import { IoCopyOutline } from 'react-icons/io5'
 import { toast } from 'sonner'
 
@@ -113,7 +113,7 @@ const UserDashboardHome = () => {
                     <div className="flex gap-4 mt-6 ">
                         <div className="flex gap-1.5 items-center">
                             <span className="text-[14px] capitalize text-[#58556A] font-poppins font-[500]">Wallet Address:</span>
-                            <CiWallet className="w-4 h-4" />
+                            <Image src={baseIcon} alt="Base Icon" className='w-4 h-4' width={16} height={16} quality={100} priority />
                             <p className="text-base capitalize text-[#58556A] font-poppins font-[400]">{shortenAddress}</p>
                             <button type="button" onClick={handleCopy} className="text-[#58556A]">
                                 <IoCopyOutline className="w-4 h-4" />

@@ -4,9 +4,10 @@ import Logo from "../shared/Logo";
 import StrimzLogo from "@/public/logo/whiteLogo.png"
 import UserDropdown from "./UserDropdown";
 import { useEffect, useMemo, useState } from "react";
-import { CiWallet } from "react-icons/ci";
 import { IoCopyOutline } from "react-icons/io5";
 import { toast } from "sonner";
+import baseIcon from "@/public/networks/base.webp"
+import Image from "next/image";
 
 /**
  * The Header component renders the topmost navigation bar for the dashboard.
@@ -111,7 +112,7 @@ const Header = ({
                 <div className="hidden sm:flex flex-col">
                     <h4 className="text-primary capitalize font-sora font-[500] text-base">Welcome Back, {user?.username}</h4>
                     <div className="flex gap-1 items-center">
-                        <CiWallet className="w-4 h-4" />
+                        <Image src={baseIcon} alt="Base Icon" className='w-4 h-4' width={16} height={16} quality={100} priority />
                         <p className="text-sm capitalize text-[#58556A] font-poppins font-[400]">{shortenAddress}</p>
                         <button type="button" onClick={handleCopy} className="text-[#58556A]">
                             <IoCopyOutline className="w-4 h-4" />
