@@ -47,8 +47,8 @@ const UserDropdown: React.FC = () => {
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger className='focus:outline-none focus:border-none' asChild>
-                <button type="button" className="bg-[#F3F4F6] p-[8px] flex justify-center items-center gap-[8px] text-[#58556A] rounded-[12px]">
+            <DropdownMenuTrigger className='focus:outline-none' asChild>
+                <button type="button" className="bg-white p-[8px] flex justify-center items-center gap-[4px] text-primary rounded-[12px] border-[1px] border-[#E5E7EB] shadow-subIconShadow">
                     <PiUserCircleLight className='w-[24px] h-[24px]' />
                     <RxCaretDown className='w-[24px] h-[24px]' />
                 </button>
