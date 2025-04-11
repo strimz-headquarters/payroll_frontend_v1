@@ -51,7 +51,7 @@ const MobileNav = () => {
                                         smooth={true}
                                         spy={true}
                                         duration={500}
-                                        className={`capitalize font-poppins text-strimzPrimary font-[500] text-2xl cursor-pointer hover:underline flex items-center gap-2`}
+                                        className={`capitalize font-poppins text-primary font-[500] text-2xl cursor-pointer hover:underline flex items-center gap-2`}
                                     >
                                         {link.name}
                                         <MoveUpRight className="w-6 h-6" />
