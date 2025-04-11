@@ -4,8 +4,8 @@ import { getMetadata } from "@/utils/getMatadata";
 import { Toaster } from 'sonner';
 
 export const metadata = getMetadata({
-  title: "Strimz",
-  description: "Strimz is a DeFi payroll solution designed to automate crypto-based salary disbursements, offering secure, seamless, and efficient financial management for businesses and individuals.",
+  title: "Strimz Payroll",
+  description: "Strimz Payroll is a DeFi payroll solution designed to automate crypto-based salary disbursements, offering secure, seamless, and efficient financial management for businesses and individuals.",
 })
 
 /**

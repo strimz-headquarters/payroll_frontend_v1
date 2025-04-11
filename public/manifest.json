@@ -1,7 +1,7 @@
 {
-    "name": "Strimz",
-    "short_name": "Strimz",
-    "description": "Strimz is a DeFi payroll solution designed to automate crypto-based salary disbursements, offering secure, seamless, and efficient financial management for businesses and individuals.",
+    "name": "Strimz Payroll",
+    "short_name": "Strimz Payroll",
+    "description": "Strimz Payroll is a DeFi payroll solution designed to automate crypto-based salary disbursements, offering secure, seamless, and efficient financial management for businesses and individuals.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#050020",

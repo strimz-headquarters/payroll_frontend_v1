@@ -29,7 +29,7 @@ export const getMetadata = ({
 
   return {
     generator: "Strimz Team",
-    applicationName: "Strimz",
+    applicationName: "Strimz Payroll",
     referrer: "origin-when-cross-origin",
     keywords: [
       "strimz",
@@ -92,11 +92,11 @@ export const getMetadata = ({
       images: [
         {
           url: imageUrl,
-          alt: "Strimz - Token Streaming App",
+          alt: "Strimz Payroll - Token Streaming App",
         },
       ],
       type: "website",
-      siteName: "Strimz",
+      siteName: "Strimz Payroll",
       locale: "en_US",
     },
     twitter: {
@@ -110,7 +110,7 @@ export const getMetadata = ({
       images: [
         {
           url: imageUrl,
-          alt: "Strimz - Token Streaming App",
+          alt: "Strimz Payroll - Token Streaming App",
         },
       ],
     },
