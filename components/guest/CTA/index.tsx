@@ -42,7 +42,7 @@ const CTA = () => {
                 </div>
 
                 <div className="relative w-full h-[145px] overflow-hidden">
-                    <Image src={pattern} alt="pattern" className='w-full h-full' width={1440} height={151} quality={100} priority />
+                    <Image src={pattern} alt="pattern" className='w-full h-full animate-pulse' width={1440} height={151} quality={100} priority />
                     <span className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex lg:w-[90px] lg:h-[90px] md:w-[70px] md:h-[70px] w-[50px] h-[50px]'>
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-85" />
                         <Image src={strimzVector} alt='logo' className='w-full h-full' width={120} height={120} priority quality={100} />
