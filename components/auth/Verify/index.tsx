@@ -107,7 +107,7 @@ const FormInputs = () => {
                 toast.success("user verified", {
                     position: "top-right",
                 })
-                router.push("/plans");
+                router.push("/user");
             }
 
         } catch (error: any) {
