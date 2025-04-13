@@ -27,7 +27,7 @@ const Alert = () => {
                         <span className="w-4 h-4 mt-[1.5px] flex justify-center items-center bg-[#F3F4F6] rounded-full">
                             <FaCheck className="w-2 h-2 text-primary" />
                         </span>
-                        <span className="flex-1">Create your first payroll or pay for a subscription.</span>
+                        <span className="flex-1">Create your first payroll.</span>
                     </li>
                 </ul>
             </div>
