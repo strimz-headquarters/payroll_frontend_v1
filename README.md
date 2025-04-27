@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Strimz Payroll Integration Suite
 
-## Getting Started
+![Strimz Logo](https://example.com/strimz-logo.png)
 
-First, run the development server:
+Secure DeFi payroll management with automated crypto disbursements and enterprise-grade session management.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- 🔐 AES-256-CBC Session Encryption
+- ⏳ Configurable Session Timeouts
+- 🛡️ Cross-Tab Session Synchronization
+- 📊 Activity-Based Session Renewal
+- 🔄 Seamless Crypto Payment Automation
+
+## Authentication Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant GuestLayout
+    participant AuthLayout
+    participant DashboardLayout
+    participant SessionStorage
+
+    User->>GuestLayout: Access Public Page
+    GuestLayout->>SessionStorage: Check Session
+    Note right of GuestLayout: No redirect if authenticated
+    
+    User->>AuthLayout: Navigate to Login/Signup
+    AuthLayout->>SessionStorage: Check Session
+    alt Authenticated
+        AuthLayout->>DashboardLayout: Redirect
+    else New User
+        AuthLayout->>User: Show Auth Forms
+        User->>AuthLayout: Submit Credentials
+        AuthLayout->>SessionStorage: Set Encrypted Session
+        AuthLayout->>DashboardLayout: Redirect
+    end
+
+    User->>DashboardLayout: Access Protected Content
+    DashboardLayout->>SessionStorage: Validate Session
+    alt Valid Session
+        DashboardLayout->>User: Show Content
+    else Invalid Session
+        DashboardLayout->>AuthLayout: Redirect to Login
+    end
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Session Management Architecture
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```mermaid
+graph TD
+    A[User Activity] --> B(Reset Inactivity Timer)
+    B --> C{Session Valid?}
+    C -->|Yes| D[Maintain Session]
+    C -->|No| E[Clear Session]
+    E --> F[Redirect to Login]
+    
+    G[Tab/Window Close] --> H[SessionStorage Clear]
+    I[New Tab Opened] --> J[Sync via Storage Events]
+    
+    subgraph Security Layer
+        K[AES-256 Encryption]
+        L[SessionStorage Isolation]
+        M[HMAC Validation]
+    end
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Encryption Workflow
 
-## Learn More
+```mermaid
+flowchart LR
+    subgraph Initialization
+        A[User Login] --> B[Generate 256-bit Session Key]
+        B --> C[Encrypt User Data]
+        C --> D[Store in sessionStorage]
+    end
+    
+    subgraph Session Usage
+        E[API Request] --> F[Decrypt Session]
+        F --> G[Validate Expiration]
+        G --> H[Refresh Activity Timestamp]
+    end
+    
+    subgraph Termination
+        I[Logout/Timeout] --> J[Wipe sessionStorage]
+        K[Tab Close] --> J
+        L[Inactivity] --> J
+    end
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Key Security Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Session Storage**
+   - Tab-specific isolation
+   - Automatic clearance on tab close
+   - Encrypted payload storage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Cryptographic Protections**
+   - AES-256-CBC encryption
+   - PBKDF2 key derivation (1000 iterations)
+   - Unique IV per session
 
-## Deploy on Vercel
+3. **Activity Monitoring**
+   - 15-minute inactivity timeout
+   - Mouse/keyboard/scroll detection
+   - Periodic session validation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Cross-Tab Security**
+   - Storage event synchronization
+   - Session replication prevention
+   - Focus state validation
