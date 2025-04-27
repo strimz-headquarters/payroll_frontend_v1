@@ -1,19 +1,23 @@
 "use client";
+
 import Footer from "@/components/dashboard_shared/Footer";
 import Header from "@/components/dashboard_shared/Header";
 import SideBar from "@/components/dashboard_shared/SideBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation';
+import { userManager } from "@/config/ManageUser";
+
 
 /**
- * The UserLayout component renders the layout for the user dashboard.
- * It includes a sidebar, a header, and a main content area.
- * The sidebar is collapsible and can be toggled by clicking on the hamburger
- * button in the header.
- * The main content area is a scrollable container that contains the
- * content of the currently active page.
- * The Footer component is rendered at the bottom of the page.
- * @param {React.ReactNode} children - The content to be rendered within the main section.
- * @returns {JSX.Element} The user layout component.
+ * The UserLayout component renders a basic layout for authenticated user pages.
+ * It renders a sidebar, a header, a main content section, and a footer.
+ * The sidebar is collapsible and can be toggled by the user.
+ * The component also includes authentication session management.
+ *
+ * Props:
+ * - `children`: A React node that contains the content to be rendered within the main content section.
+ *
+ * @returns A JSX element representing the layout.
  */
 export default function UserLayout({
     children,
@@ -21,6 +25,24 @@ export default function UserLayout({
     children: React.ReactNode;
 }>) {
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+
+    const router = useRouter();
+
+    // Session management initialization
+    useEffect(() => {
+        const cleanup = userManager.initialize();
+        return () => {
+            cleanup();
+            userManager.clearSession();
+        };
+    }, []);
+
+    // Session validation
+    useEffect(() => {
+        if (!userManager.checkSession()) {
+            router.push('/login');
+        }
+    }, [router]);
 
     return (
         <div className=" bg-[#F9FAFB] lg:p-1.5">
