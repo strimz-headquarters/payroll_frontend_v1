@@ -3,8 +3,9 @@ import { encryptData, decryptData, clearSession } from "../providers/crypt";
 
 // Session configuration
 const USER_KEY = "strimzUD";
-const CHECK_INTERVAL = 5 * 60 * 1000; // 5 minutes
 const EXPIRATION_BUFFER = 5000; // 5 seconds
+
+let inactivityTimer: ReturnType<typeof setTimeout>;
 
 export const userManager = {
   /**
@@ -76,17 +77,22 @@ export const userManager = {
     if (typeof window === "undefined") return () => {};
 
     // Initial check
-    userManager.checkSession();
-
-    // Periodic checks
-    const intervalId = setInterval(userManager.checkSession, CHECK_INTERVAL);
-
-    // Add visibility change handler
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        userManager.checkSession();
-      }
+    const resetTimer = () => {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(() => {
+        clearSession();
+        window.location.reload();
+      }, 15 * 60 * 1000); // 15 minutes
     };
+
+    // Initial setup
+    resetTimer();
+
+    // Activity listeners
+    const activityListeners = ["mousemove", "keypress", "scroll"] as const;
+    activityListeners.forEach((event) => {
+      window.addEventListener(event, resetTimer);
+    });
 
     // Add storage event listener
     const handleStorageChange = (event: StorageEvent) => {
@@ -95,13 +101,14 @@ export const userManager = {
       }
     };
 
-    window.addEventListener("visibilitychange", handleVisibilityChange);
     window.addEventListener("storage", handleStorageChange);
 
     // Return cleanup function with proper type
     return () => {
-      clearInterval(intervalId);
-      window.removeEventListener("visibilitychange", handleVisibilityChange);
+      clearTimeout(inactivityTimer);
+      activityListeners.forEach((event) => {
+        window.removeEventListener(event, resetTimer);
+      });
       window.removeEventListener("storage", handleStorageChange);
     };
   },
