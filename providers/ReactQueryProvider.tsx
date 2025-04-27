@@ -3,11 +3,17 @@ import { userManager } from "@/config/ManageUser";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
+
 /**
- * The ReactQueryProvider is a React context provider that wraps a QueryClient and its children.
- * The QueryClient is a state container for react-query that stores the results of all queries.
- * The ReactQueryProvider is used to provide a QueryClient to all react-query hooks and components
- * within its children.
+ * Provider for React Query that also sets up the User Manager.
+ *
+ * It does the following:
+ * 1. Initializes the User Manager.
+ * 2. Adds a "beforeunload" event listener to clear the session when the user closes or reloads the page.
+ * 3. Clears the session when the component is unmounted.
+ *
+ * @param children - The children of the component.
+ * @returns A React Query client provider with the User Manager set up.
  */
 export default function ReactQueryProvider({ children }: { children: React.ReactNode }) {
     const [queryClient] = useState(() => new QueryClient());
