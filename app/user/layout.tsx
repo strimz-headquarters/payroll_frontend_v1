@@ -39,7 +39,9 @@ export default function UserLayout({
 
     // Session validation
     useEffect(() => {
-        if (!userManager.checkSession()) {
+        const currentUser = userManager.getUser();
+        if (!userManager.checkSession() && !currentUser?.verified) {
+            userManager.clearSession();
             router.push('/login');
         }
     }, [router]);

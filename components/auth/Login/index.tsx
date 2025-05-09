@@ -15,6 +15,8 @@ import { toast } from "sonner";
 import Logo from "@/components/shared/Logo";
 import StrimzLogo from "@/public/logo/blueLogo.png"
 import { LoginFormInputValues } from "@/types/auth";
+import { defaultAxiosInstance } from "@/config/AxiosInstance";
+import { userManager } from "@/config/ManageUser";
 
 
 
@@ -91,16 +93,34 @@ const FormInputs = () => {
             setIsSending(true);
 
             const data = JSON.stringify(values);
-            console.log(data);
 
-            toast.success("login successful", {
-                position: "top-right",
-            });
+            const response = await defaultAxiosInstance.post("auth/sign-in", data);
 
-            router.push("/user");
+            if (response.data.success) {
+                resetForm();
+                toast.success(response.data.message, {
+                    position: "top-right",
+                });
+
+                // Encrypt and set user data in session storage
+                userManager.setUser(response.data.data, 1);
+
+                router.push("/user");
+            }
 
         } catch (error: any) {
-            console.error("Failed to login:", error);
+            console.error("Failed to login:", error.response.data);
+
+            if (error.response.data.message === "Email verification sent") {
+                router.push("/verify-email");
+                toast.success(error.response.data.message, {
+                    position: "top-right",
+                })
+            } else {
+                toast.error(error.response.data.message, {
+                    position: "top-right",
+                })
+            }
 
         } finally {
             setIsSending(false);

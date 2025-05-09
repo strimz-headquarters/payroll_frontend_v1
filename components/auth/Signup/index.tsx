@@ -15,6 +15,8 @@ import { toast } from "sonner";
 import Logo from "@/components/shared/Logo";
 import StrimzLogo from "@/public/logo/blueLogo.png"
 import { SignupFormInputValues } from "@/types/auth";
+import { defaultAxiosInstance } from "@/config/AxiosInstance";
+import { userManager } from "@/config/ManageUser";
 
 /**
  * Renders a sign up form that includes a logo, a heading, and a form
@@ -92,24 +94,43 @@ const FormInputs = () => {
         try {
             setIsSending(true);
 
-            const data = JSON.stringify(values);
+            const updatedValues = {
+                ...values,
+                type: "eth"
+            }
 
-            toast.success("sign up successful", {
-                position: "top-right",
-            });
+            const data = JSON.stringify(updatedValues);
 
-            console.log(data);
+            const response = await defaultAxiosInstance.post("auth/sign-up", data);
 
-            router.push("/verify-email");
+            if (response.data.success) {
+                resetForm();
+                toast.success(response.data.message, {
+                    position: "top-right",
+                });
+
+                // Encrypt and set user data in session storage
+                userManager.setUser(response.data.data, 1);
+
+                router.push("/verify-email");
+            }
+
 
         } catch (error: any) {
-            console.error("Failed to Signup:", error);
+            console.error("Failed to Signup:", error.response.data);
+
+            toast.error(error.response.data.message, {
+                position: "top-right",
+            })
+
+            userManager.clearSession(); // Clear any partial session
 
         } finally {
             setIsSending(false);
             resetForm()
         }
     };
+
     return (
         <Formik
             initialValues={initialValues}

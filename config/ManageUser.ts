@@ -1,5 +1,4 @@
 import { StrimzUD } from "@/types/auth";
-import { encryptData, decryptData, clearSession } from "../providers/crypt";
 
 // Session configuration
 const USER_KEY = "strimzUD";
@@ -21,33 +20,33 @@ export const userManager = {
     };
 
     try {
-      const encryptedData = encryptData(userWithExpiration);
-      sessionStorage.setItem(USER_KEY, encryptedData);
+      sessionStorage.setItem(USER_KEY, JSON.stringify(userWithExpiration));
     } catch (error) {
-      console.error("Failed to encrypt user data:", error);
-      clearSession();
+      console.error("Failed to store user data:", error);
+      userManager.clearSession();
     }
   },
 
   /**
-   * Retrieves and validates decrypted user data
-   * @returns Decrypted user data or null
+   * Retrieves and validates user data
+   * @returns User data or null
    */
   getUser: (): Partial<StrimzUD> | null => {
     try {
-      const encryptedData = sessionStorage.getItem(USER_KEY);
-      if (!encryptedData) return null;
+      const userData = sessionStorage.getItem(USER_KEY);
+      if (!userData) return null;
 
-      const userData = decryptData<StrimzUD>(encryptedData);
-      if (!userData || Date.now() > userData.expiration - EXPIRATION_BUFFER) {
-        clearSession();
+      const parsedData = JSON.parse(userData) as StrimzUD;
+
+      if (Date.now() > parsedData.expiration - EXPIRATION_BUFFER) {
+        userManager.clearSession();
         return null;
       }
 
-      return userData;
+      return parsedData;
     } catch (error) {
-      console.error("Failed to decrypt user data:", error);
-      clearSession();
+      console.error("Failed to parse user data:", error);
+      userManager.clearSession();
       return null;
     }
   },
@@ -64,7 +63,7 @@ export const userManager = {
    * Clears all session data securely
    */
   clearSession: (): void => {
-    clearSession();
+    sessionStorage.removeItem(USER_KEY);
     // Additional cleanup if needed
   },
 
@@ -80,7 +79,7 @@ export const userManager = {
     const resetTimer = () => {
       clearTimeout(inactivityTimer);
       inactivityTimer = setTimeout(() => {
-        clearSession();
+        userManager.clearSession();
         window.location.reload();
       }, 15 * 60 * 1000); // 15 minutes
     };

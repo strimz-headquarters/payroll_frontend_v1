@@ -3,7 +3,7 @@ import { userManager } from "./ManageUser";
 
 // Default instance for non-authenticated requests
 export const defaultAxiosInstance = axios.create({
-  baseURL: "https://strimz-backend.onrender.com/api/v1",
+  baseURL: "https://strimz-backend.onrender.com/api/v1/",
   headers: {
     "Content-Type": "application/json",
   },

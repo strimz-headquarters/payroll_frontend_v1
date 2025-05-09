@@ -12,6 +12,8 @@ import { useRouter } from "next/navigation"
 import { AiOutlineLoading3Quarters } from "react-icons/ai"
 import { RxCaretLeft } from "react-icons/rx";
 import { toast } from "sonner"
+import { userManager } from "@/config/ManageUser"
+import { StrimzUD } from "@/types/auth"
 
 
 /**
@@ -25,14 +27,15 @@ import { toast } from "sonner"
  */
 const VerificationForm = () => {
     const router = useRouter()
-    const [user, setUser] = useState<{ email?: string }>({});
+    const [user, setUser] = useState<Partial<StrimzUD>>();
     const [isSending, setIsSending] = useState<boolean>(false)
 
     useEffect(() => {
-        const data = window.localStorage.getItem("strimzUser");
-        const parsedUser = data ? JSON.parse(data) : { email: "andrew@gmail.com" };
-        setUser(parsedUser);
-    }, []);
+        const currentUser = userManager.getUser();
+        if (currentUser) {
+            setUser(currentUser);
+        }
+    }, [router]);
 
     const handleResendOTP = async () => {
         setIsSending(true)
