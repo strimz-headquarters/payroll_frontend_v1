@@ -8,8 +8,8 @@ import * as Yup from "yup";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import Link from "next/link";
-import GoogleIcon from "@/public/brands/Google.svg"
-import Image from "next/image";
+// import GoogleIcon from "@/public/brands/Google.svg"
+// import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Logo from "@/components/shared/Logo";
@@ -109,7 +109,7 @@ const FormInputs = () => {
                     position: "top-right",
                 });
 
-                // Encrypt and set user data in session storage
+                // set user data in session storage
                 userManager.setUser(response.data.data, 1);
 
                 router.push("/verify-email");
@@ -205,12 +205,12 @@ const FormInputs = () => {
                             }
                         </button>
                         {/* divide */}
-                        <div className="w-full h-[1px] bg-[#E5E7EB]" />
+                        {/* <div className="w-full h-[1px] bg-[#E5E7EB]" /> */}
                         {/* google auth */}
-                        <button type="button" className='w-full h-[40px] flex justify-center gap-1.5 items-center rounded-[8px] bg-[#F9FAFB] text-[#58556A] font-poppins font-[500] shadow-[0px_-2px_4px_0px_#00000014_inset] border border-[#E5E7EB] text-[12px]'>
+                        {/* <button type="button" className='w-full h-[40px] flex justify-center gap-1.5 items-center rounded-[8px] bg-[#F9FAFB] text-[#58556A] font-poppins font-[500] shadow-[0px_-2px_4px_0px_#00000014_inset] border border-[#E5E7EB] text-[12px]'>
                             <Image src={GoogleIcon} width={12} height={12} alt="Google Icon" className='w-[18px] h-[18px]' priority quality={100} />
                             <span>Continue with Google</span>
-                        </button>
+                        </button> */}
 
                         {/* end */}
                         <div className="w-full flex flex-col items-center gap-4 mt-8">

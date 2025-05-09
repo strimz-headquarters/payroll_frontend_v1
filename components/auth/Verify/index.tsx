@@ -14,6 +14,7 @@ import { RxCaretLeft } from "react-icons/rx";
 import { toast } from "sonner"
 import { userManager } from "@/config/ManageUser"
 import { StrimzUD } from "@/types/auth"
+import { defaultAxiosInstance } from "@/config/AxiosInstance"
 
 
 /**
@@ -41,10 +42,18 @@ const VerificationForm = () => {
         setIsSending(true)
         try {
             const data = JSON.stringify({ email: user?.email });
-            console.log(data);
-        } catch (error: any) {
-            console.error(error);
+            const response = await defaultAxiosInstance.post("auth/send-verification", data);
 
+            if (response.data.success) {
+                toast.success(response.data.message, {
+                    position: "top-right",
+                });
+            }
+        } catch (error: any) {
+            console.error(error.response.data);
+            toast.error(error.response.data.message, {
+                position: "top-right",
+            })
         } finally {
             setIsSending(false)
         }
@@ -104,17 +113,27 @@ const FormInputs = () => {
     const validateOTP = async (otp: string) => {
         setIsLoading(true)
         try {
+            const response = await defaultAxiosInstance.get(`auth/verify/${otp}`);
 
-            console.log(otp);
-            if (otp === "1234") {
-                toast.success("user verified", {
+            if (response.data.success) {
+                toast.success(response.data.message, {
                     position: "top-right",
-                })
-                router.push("/user");
+                });
+
+                // set user data in session storage
+                userManager.setUser(response.data.data, 1);
+
+                setValue("")
+
+                router.push("/login");
             }
 
         } catch (error: any) {
-            console.error(error);
+            console.error(error.response.data);
+            toast.error(error.response.data.message, {
+                position: "top-right",
+            })
+            setValue("")
         } finally {
             setIsLoading(false)
         }
