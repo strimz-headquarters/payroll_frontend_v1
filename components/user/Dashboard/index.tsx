@@ -14,6 +14,8 @@ import { IoCopyOutline } from 'react-icons/io5'
 import { toast } from 'sonner'
 import { userManager } from '@/config/ManageUser'
 import { StrimzUD } from '@/types/auth'
+import useGetUSDCBalance from '@/controllers/useGetUSDCBalance'
+import useGetUSDTBalance from '@/controllers/useGetUSDTBalance'
 
 /**
  * UserDashboardHome component renders the main dashboard interface for the user.
@@ -33,6 +35,9 @@ import { StrimzUD } from '@/types/auth'
 
 const UserDashboardHome = () => {
     const [user, setUser] = useState<Partial<StrimzUD>>();
+
+    const usdcBal = useGetUSDCBalance();
+    const usdtBal = useGetUSDTBalance();
 
     useEffect(() => {
         const currentUser = userManager.getUser();
@@ -87,7 +92,7 @@ const UserDashboardHome = () => {
                                 </span>
                                 usdc
                             </span>
-                            <h3 className="text-black font-[600] font-sora text-xl text-wrap">$ 0</h3>
+                            <h3 className="text-black font-[600] font-sora text-xl text-wrap">$ {usdcBal ? usdcBal : "0.00"}</h3>
                         </div>
 
                         {/* USDT */}
@@ -98,7 +103,7 @@ const UserDashboardHome = () => {
                                 </span>
                                 usdt
                             </span>
-                            <h3 className="text-black font-[600] font-sora text-xl text-wrap">$ 0</h3>
+                            <h3 className="text-black font-[600] font-sora text-xl text-wrap">$ {usdtBal ? usdtBal : "0.00"}</h3>
                         </div>
 
                         {/* Total Payout */}

@@ -27,17 +27,19 @@ createAppKit({
     networks: [sepolia],
     defaultNetwork: sepolia,
     metadata: metadata,
+    defaultAccountTypes: { eip155: "eoa" },
     features: {
         analytics: true,
         socials: false,
         swaps: true,
         onramp: true,
+        email: false,
     },
     themeMode: 'light',
     themeVariables: {
         "--w3m-accent": "#02C76A",
         "--w3m-border-radius-master": "1px",
-        "--w3m-font-size-master": "4px",
+        "--w3m-font-size-master": "9px",
         "--w3m-z-index": 9999,
     },
 })

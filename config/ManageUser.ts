@@ -63,7 +63,7 @@ export const userManager = {
    * Clears all session data securely
    */
   clearSession: (): void => {
-    sessionStorage.removeItem(USER_KEY);
+    window.sessionStorage.removeItem(USER_KEY);
     // Additional cleanup if needed
   },
 
