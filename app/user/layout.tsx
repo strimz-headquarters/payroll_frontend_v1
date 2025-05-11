@@ -28,19 +28,10 @@ export default function UserLayout({
 
     const router = useRouter();
 
-    // Session management initialization
-    useEffect(() => {
-        const cleanup = userManager.initialize();
-        return () => {
-            cleanup();
-            userManager.clearSession();
-        };
-    }, []);
-
     // Session validation
     useEffect(() => {
         const currentUser = userManager.getUser();
-        if (!userManager.checkSession() && !currentUser?.verified) {
+        if (!currentUser?.verified) {
             userManager.clearSession();
             router.push('/login');
         }

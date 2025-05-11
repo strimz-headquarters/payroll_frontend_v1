@@ -12,6 +12,8 @@ import Withdraw from './Withdraw'
 import baseIcon from "@/public/networks/base.webp"
 import { IoCopyOutline } from 'react-icons/io5'
 import { toast } from 'sonner'
+import { userManager } from '@/config/ManageUser'
+import { StrimzUD } from '@/types/auth'
 
 /**
  * UserDashboardHome component renders the main dashboard interface for the user.
@@ -30,12 +32,13 @@ import { toast } from 'sonner'
  */
 
 const UserDashboardHome = () => {
-    const [user, setUser] = useState<{ address?: `0x${string}` }>({});
+    const [user, setUser] = useState<Partial<StrimzUD>>();
 
     useEffect(() => {
-        const data = window.localStorage.getItem("strimzUser");
-        const parsedUser = data ? JSON.parse(data) : { address: "0xbe03CE9d6001D27BE41fc87e3E3f777d04e70Fe2" };
-        setUser(parsedUser);
+        const currentUser = userManager.getUser();
+        if (currentUser) {
+            setUser(currentUser);
+        }
     }, []);
 
     const shortenAddress = useMemo(() => {

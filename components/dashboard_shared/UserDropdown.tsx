@@ -16,8 +16,8 @@ import {
 import { RxCaretDown } from 'react-icons/rx';
 import { PiUserCircleLight } from "react-icons/pi";
 import { IoIosHelpCircleOutline } from 'react-icons/io';
-import { MdOutlinePayment } from "react-icons/md";
 import { useRouter } from 'next/navigation';
+import { userManager } from '@/config/ManageUser';
 
 
 /**
@@ -41,8 +41,8 @@ const UserDropdown: React.FC = () => {
     const router = useRouter()
 
     const handleLogout = () => {
-        localStorage.removeItem("strimzUser");
-        router.push("/login")
+        userManager.clearSession();
+        router.push("/login");
     }
 
     return (
@@ -61,12 +61,6 @@ const UserDropdown: React.FC = () => {
                         <Link href="/user/account">
                             <User />
                             <span>Profile Settings</span>
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                        <Link href="/user/account/plan">
-                            <MdOutlinePayment />
-                            <span>Plans and billing</span>
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>

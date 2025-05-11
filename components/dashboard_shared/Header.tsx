@@ -8,6 +8,8 @@ import { IoCopyOutline } from "react-icons/io5";
 import { toast } from "sonner";
 import baseIcon from "@/public/networks/base.webp"
 import Image from "next/image";
+import { userManager } from "@/config/ManageUser";
+import { StrimzUD } from "@/types/auth";
 
 /**
  * The Header component renders the topmost navigation bar for the dashboard.
@@ -28,12 +30,13 @@ const Header = ({
     setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
 
-    const [user, setUser] = useState<{ username?: string, address?: string }>({});
+    const [user, setUser] = useState<Partial<StrimzUD>>();
 
     useEffect(() => {
-        const data = window.localStorage.getItem("strimzUser");
-        const parsedUser = data ? JSON.parse(data) : { username: "Andrew", address: "0xbe03CE9d6001D27BE41fc87e3E3f777d04e70Fe2" };
-        setUser(parsedUser);
+        const currentUser = userManager.getUser();
+        if (currentUser) {
+            setUser(currentUser);
+        }
     }, []);
 
     const shortenAddress = useMemo(() => {

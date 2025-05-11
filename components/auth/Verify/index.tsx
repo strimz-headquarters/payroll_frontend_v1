@@ -125,7 +125,7 @@ const FormInputs = () => {
 
                 setValue("")
 
-                router.push("/login");
+                router.push("/user");
             }
 
         } catch (error: any) {

@@ -24,7 +24,7 @@ export default function AuthLayout({
 
     useEffect(() => {
         const currentUser = userManager.getUser();
-        if (currentUser != null && currentUser?.verified) {
+        if (currentUser?.verified === true) {
             router.push('/user');
         }
     }, [router]);
