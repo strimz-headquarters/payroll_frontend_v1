@@ -125,6 +125,7 @@ const Header = ({
                 </div>
 
                 <div className="flex items-center gap-3">
+                    <appkit-button />
                     {/* <!-- User Area --> */}
                     <UserDropdown />
                     {/* <!-- User Area --> */}

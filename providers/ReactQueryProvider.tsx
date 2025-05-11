@@ -1,7 +1,7 @@
 "use client";
 import { userManager } from "@/config/ManageUser";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 
 /**
@@ -15,8 +15,11 @@ import { useEffect, useState } from "react";
  * @param children - The children of the component.
  * @returns A React Query client provider with the User Manager set up.
  */
+
+// Set up queryClient
+const queryClient = new QueryClient()
+
 export default function ReactQueryProvider({ children }: { children: React.ReactNode }) {
-    const [queryClient] = useState(() => new QueryClient());
 
     useEffect(() => {
         // Store the cleanup function with proper type

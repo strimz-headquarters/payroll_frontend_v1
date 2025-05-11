@@ -1,7 +1,8 @@
-import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import "@/styles/globals.css";
 import { getMetadata } from "@/utils/getMatadata";
 import { Toaster } from 'sonner';
+import { headers } from 'next/headers'
+import ContextProvider from "@/providers/Context";
 
 export const metadata = getMetadata({
   title: "Strimz Payroll",
@@ -18,20 +19,24 @@ export const metadata = getMetadata({
  * @param {React.ReactNode} children The children to be rendered within the layout.
  * @returns {JSX.Element} The root layout of the application.
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const headersObj = await headers();
+  const cookies = headersObj.get('cookie')
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className="w-full min-h-screen antialiased bg-[#FFFFFF]"
       >
-        <ReactQueryProvider>
+        <ContextProvider cookies={cookies}>
           {children}
           <Toaster richColors position="top-right" />
-        </ReactQueryProvider>
+        </ContextProvider>
       </body>
     </html>
   );
