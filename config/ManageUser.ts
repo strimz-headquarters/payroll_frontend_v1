@@ -63,8 +63,25 @@ export const userManager = {
    * Clears all session data securely
    */
   clearSession: (): void => {
-    window.sessionStorage.removeItem(USER_KEY);
-    // Additional cleanup if needed
+    if (typeof window === "undefined") return;
+    try {
+      window.sessionStorage.setItem(USER_KEY, "");
+      window.sessionStorage.removeItem(USER_KEY);
+
+      const clearEvent = new StorageEvent("storage", {
+        key: USER_KEY,
+        newValue: null,
+        oldValue: window.sessionStorage.getItem(USER_KEY),
+        storageArea: window.sessionStorage,
+      });
+      window.dispatchEvent(clearEvent);
+
+      if (inactivityTimer) {
+        clearTimeout(inactivityTimer);
+      }
+    } catch (error) {
+      console.error("Failed to clear session data:", error);
+    }
   },
 
   /**

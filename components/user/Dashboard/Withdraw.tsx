@@ -18,6 +18,8 @@ import {
 import usdcIcon from "@/public/brands/USDC.svg"
 import usdtIcon from "@/public/brands/USDT.svg"
 import Image from "next/image";
+import useWithdrawFunds from "@/controllers/useWithdrawFunds";
+import { useState } from "react";
 
 /**
  * Withdraw is a dialog component that facilitates the process of withdrawing funds from a wallet.
@@ -33,6 +35,20 @@ import Image from "next/image";
  */
 
 const Withdraw = () => {
+
+    const { withdrawFunds } = useWithdrawFunds()
+
+    const [amount, setAmount] = useState<string>("");
+    const [token, setToken] = useState<string>("");
+
+    const handleFundWithdrawal = () => {
+        if (!token || !amount) return;
+        const numericAmount = parseFloat(amount);
+        if (isNaN(numericAmount) || numericAmount <= 0) return;
+
+        withdrawFunds(token, numericAmount);
+    };
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -56,7 +72,8 @@ const Withdraw = () => {
                     {/* token */}
                     <div className='w-full flex flex-col'>
                         <label htmlFor="token" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Select token</label>
-                        <Select>
+                        <Select value={token}
+                            onValueChange={setToken}>
                             <SelectTrigger className="focus:ring-0 focus:outline-none w-full rounded-[8px] border bg-[#F9FAFB] border-[#E5E7EB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent">
                                 <SelectValue placeholder="Select token" />
                             </SelectTrigger>
@@ -80,12 +97,13 @@ const Withdraw = () => {
                     {/* amount */}
                     <div className='w-full flex flex-col'>
                         <label htmlFor="amount" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Amount</label>
-                        <input type="number" name="amount" id="amount" placeholder='$ 0.00' className={`w-full rounded-[8px] border bg-[#F9FAFB] border-[#E5E7EB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent`} />
+                        <input type="number" name="amount" value={amount}
+                            onChange={(e) => setAmount(e.target.value)} id="amount" placeholder='$ 0.00' className={`w-full rounded-[8px] border bg-[#F9FAFB] border-[#E5E7EB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent`} />
 
                     </div>
                 </div>
                 <DialogFooter>
-                    <button type="button" className='w-full h-[40px] flex justify-center items-center rounded-[8px] bg-accent text-[#FFFFFF] font-poppins font-[500] shadow-joinWaitlistBtnShadow text-shadow text-[12px] capitalize'>
+                    <button type="button" onClick={handleFundWithdrawal} className='w-full h-[40px] flex justify-center items-center rounded-[8px] bg-accent text-[#FFFFFF] font-poppins font-[500] shadow-joinWaitlistBtnShadow text-shadow text-[12px] capitalize'>
                         withdraw from wallet
                     </button>
                 </DialogFooter>

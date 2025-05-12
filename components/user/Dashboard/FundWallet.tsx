@@ -18,6 +18,8 @@ import {
 import usdcIcon from "@/public/brands/USDC.svg"
 import usdtIcon from "@/public/brands/USDT.svg"
 import Image from "next/image";
+import useFundAccount from "@/controllers/useFundAccount";
+import { useState } from "react";
 
 /**
  * FundWallet is a dialog component that allows users to fund their wallet.
@@ -28,6 +30,18 @@ import Image from "next/image";
  * The footer contains a fund wallet button.
  */
 const FundWallet = () => {
+    const { fundAccount } = useFundAccount()
+
+    const [amount, setAmount] = useState<string>("");
+    const [token, setToken] = useState<string>("");
+
+    const handleFundWallet = () => {
+        if (!token || !amount) return;
+        const numericAmount = parseFloat(amount);
+        if (isNaN(numericAmount) || numericAmount <= 0) return;
+
+        fundAccount(token, numericAmount);
+    };
 
     return (
         <Dialog>
@@ -49,7 +63,8 @@ const FundWallet = () => {
                     {/* select token */}
                     <div className='w-full flex flex-col'>
                         <label htmlFor="token" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Select token</label>
-                        <Select>
+                        <Select value={token}
+                            onValueChange={setToken}>
                             <SelectTrigger className="focus:ring-0 focus:outline-none w-full rounded-[8px] border bg-[#F9FAFB] border-[#E5E7EB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent">
                                 <SelectValue placeholder="Select token" />
                             </SelectTrigger>
@@ -72,12 +87,13 @@ const FundWallet = () => {
                     {/* amount */}
                     <div className='w-full flex flex-col'>
                         <label htmlFor="amount" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Amount</label>
-                        <input type="number" name="amount" id="amount" placeholder='$ 0.00' className={`w-full rounded-[8px] border bg-[#F9FAFB] border-[#E5E7EB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent`} />
+                        <input type="number" name="amount" value={amount}
+                            onChange={(e) => setAmount(e.target.value)} id="amount" placeholder='$ 0.00' className={`w-full rounded-[8px] border bg-[#F9FAFB] border-[#E5E7EB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent`} />
 
                     </div>
                 </div>
                 <DialogFooter>
-                    <button type="button" className='w-full h-[40px] flex justify-center items-center rounded-[8px] bg-accent text-[#FFFFFF] font-poppins font-[500] shadow-joinWaitlistBtnShadow text-shadow text-[12px] capitalize'>
+                    <button type="button" onClick={handleFundWallet} className='w-full h-[40px] flex justify-center items-center rounded-[8px] bg-accent text-[#FFFFFF] font-poppins font-[500] shadow-joinWaitlistBtnShadow text-shadow text-[12px] capitalize'>
                         fund wallet
                     </button>
                 </DialogFooter>
@@ -86,4 +102,4 @@ const FundWallet = () => {
     )
 }
 
-export default FundWallet
+export default FundWallet;

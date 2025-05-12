@@ -12,7 +12,7 @@ const useGetUSDCBalance = () => {
   const queryClient = useQueryClient();
   const { data: blockNumber } = useBlockNumber({ watch: true });
 
-  const constract_address = USDC_ON_SEPOLIA;
+  const contract_address = USDC_ON_SEPOLIA;
 
   const user_address = userManager.getUser()?.address;
 
@@ -22,7 +22,7 @@ const useGetUSDCBalance = () => {
     queryKey,
     status,
   } = useReadContract({
-    address: constract_address as `0x${string}`,
+    address: contract_address as `0x${string}`,
     abi: IERC20ABI,
     functionName: "balanceOf",
     args: [user_address as `0x${string}`],
