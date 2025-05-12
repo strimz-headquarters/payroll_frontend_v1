@@ -27,7 +27,7 @@ interface StepOneFormProps {
         token: string;
         frequency: string;
         startDate: Date | null;
-        paymentTime: string;
+        // paymentTime: string;
     };
     setData: (newData: any) => void;
     handleClick: () => void;
@@ -167,7 +167,7 @@ const StepOneForm = ({ data, setData, handleClick }: StepOneFormProps) => {
                     </div>
 
                     {/* payment time */}
-                    <div className="w-full flex flex-col">
+                    {/* <div className="w-full flex flex-col">
                         <label htmlFor="paymentTime" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Stream start time <span className="text-rose-600 mt-2">*</span></label>
                         <input
                             type="time"
@@ -177,7 +177,7 @@ const StepOneForm = ({ data, setData, handleClick }: StepOneFormProps) => {
                             value={data.paymentTime}
                             onChange={(e) => setData((prev: any) => ({ ...prev, paymentTime: e.target.value }))}
                             className={`w-full rounded-[8px] border bg-[#F9FAFB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent border-[#E5E7EB]`} />
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* button */}

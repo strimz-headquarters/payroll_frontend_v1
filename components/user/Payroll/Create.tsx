@@ -28,7 +28,7 @@ const Create = () => {
         token: '',
         frequency: '',
         startDate: null as Date | null,
-        paymentTime: '',
+        // paymentTime: '',
     });
 
     // Validation for Step 1 inputs
@@ -37,8 +37,8 @@ const Create = () => {
             stepOneData.payrollName.trim() &&
             stepOneData.token &&
             stepOneData.frequency &&
-            stepOneData.startDate &&
-            stepOneData.paymentTime.trim()
+            stepOneData.startDate
+            // stepOneData.paymentTime.trim()
         );
     };
 
