@@ -3,7 +3,7 @@ import Benefits from "@/components/guest/whyStrimz";
 import BuiltForTrust from "@/components/guest/builtForTrust";
 import HeroSection from "@/components/guest/herosection";
 import HowItWorks from "@/components/guest/howItWorks";
-import Pricings from "@/components/guest/pricings";
+// import Pricings from "@/components/guest/pricings";
 import Utility from "@/components/guest/utilitybill";
 import Faqs from "@/components/guest/faqs";
 import CTA from "@/components/guest/CTA";
@@ -21,7 +21,7 @@ export default function Home() {
       <Utility />
       <BuiltForTrust />
       <HowItWorks />
-      <Pricings />
+      {/* <Pricings /> */}
       <Faqs />
       <CTA />
     </main>

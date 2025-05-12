@@ -10,10 +10,6 @@ export const navLinks: NavLinkTypes[] = [
     to: "howitworks",
   },
   {
-    name: "Pricing",
-    to: "pricing",
-  },
-  {
     name: "FAQs",
     to: "faqs",
   },
