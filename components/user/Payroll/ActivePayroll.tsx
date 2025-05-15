@@ -128,7 +128,7 @@ const ActivePayroll = ({ data }: any) => {
                                         <span className="sr-only">Toggle menu</span>
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent className="text-[#58556A] w-40 text-sm">
-                                        <Link href="/user/payroll/edit" className="w-full flex items-center gap-1 text-sm px-2 py-1">
+                                        <Link href={`/user/payroll/edit/${payroll.id}`} className="w-full flex items-center gap-1 text-sm px-2 py-1">
                                             <FiEdit className="w-4 h-4" />
                                             <span>Edit </span>
                                         </Link>

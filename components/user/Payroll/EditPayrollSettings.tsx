@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { useRouter } from "next/navigation"
 import { RxCaretLeft } from "react-icons/rx";
@@ -20,7 +21,10 @@ import { format } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import axiosInstanceWithToken from "@/config/AxiosInstance";
+import { useQuery } from "@tanstack/react-query";
+import { USDC_ON_SEPOLIA, USDT_ON_SEPOLIA } from "@/constants/Contracts";
 
 /**
  * EditPayrollSettings component renders a section displaying a form to edit
@@ -30,13 +34,58 @@ import { useState } from "react";
  * the changes.
  * @returns A JSX element representing the edit payroll settings section.
  */
-const EditPayrollSettings = () => {
-    const [date, setDate] = useState<Date>()
+const EditPayrollSettings = ({ id }: { id: string }) => {
     const router = useRouter()
 
-    const handleSave = () => {
-        router.push("/user/payroll")
+    const [data, setData] = useState({
+        payrollName: '',
+        token: '',
+        frequency: '',
+        startDate: null as Date | null,
+    });
+
+    const fetchPayroll = useCallback(async () => {
+        const response = await axiosInstanceWithToken.get(`payroll/${id}`);
+        if (response.data.success) {
+            return response.data.data; // Return the rows and count directly
+        } else {
+            throw new Error("Failed to fetch payrolls");
+        }
+    }, [id]);
+
+    const {
+        data: payrollData, // Destructure payroll data
+        isLoading, // Loading state
+    } = useQuery({
+        queryKey: ["strimzPayrolls", id], // Unique query key
+        queryFn: fetchPayroll,
+        refetchOnWindowFocus: false,
+        enabled: !!id,
+    });
+
+    useEffect(() => {
+        if (payrollData) {
+            setData({
+                payrollName: payrollData.name || '',
+                token: payrollData.token || '',
+                frequency: payrollData.frequency || '',
+                startDate: payrollData.start_date ? new Date(payrollData.start_date) : null,
+            });
+        }
+    }, [payrollData]);
+
+
+
+    const handleClick = () => {
+        // router.push("/user/payroll")
     }
+
+    if (isLoading) {
+        return <div>Loading payrolls...</div>;
+    }
+
+    console.log({ "payrollData": payrollData });
+
     return (
         <section className="w-full flex flex-col gap-10">
             <div className="w-full flex flex-col">
@@ -51,34 +100,42 @@ const EditPayrollSettings = () => {
 
             {/* inputs section */}
             <div className="w-full flex flex-col gap-4">
-                {/* payroll name */}
-                <div className="w-full flex flex-col">
-                    <label htmlFor="payrollName" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Payroll name <span className="text-rose-600 mt-2">*</span></label>
-                    <input
-                        type="text"
-                        name="payrollName"
-                        id="payrollName"
-                        placeholder='Contract employees'
-                        className={`w-full rounded-[8px] border bg-[#F9FAFB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent border-[#E5E7EB]`} />
-                </div>
 
                 <div className="w-full grid md:grid-cols-2 md:gap-6 gap-4">
+                    {/* payroll name */}
+                    <div className="w-full flex flex-col">
+                        <label htmlFor="payrollName" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Payroll name <span className="text-rose-600 mt-2">*</span></label>
+                        <input
+                            type="text"
+                            name="payrollName"
+                            id="payrollName"
+                            placeholder='Contract employees'
+                            value={data.payrollName}
+                            onChange={(e) =>
+                                setData((prev: any) => ({ ...prev, payrollName: e.target.value }))
+                            }
+                            className={`w-full rounded-[8px] border bg-[#F9FAFB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent border-[#E5E7EB]`} />
+                    </div>
+
                     {/* select token */}
                     <div className='w-full flex flex-col'>
                         <label htmlFor="token" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Token <span className="text-rose-600 mt-2">*</span></label>
                         <Select
+                            onValueChange={(value) =>
+                                setData((prev: any) => ({ ...prev, token: value }))
+                            }
                         >
                             <SelectTrigger className="focus:ring-0 focus:outline-none w-full rounded-[8px] border bg-[#F9FAFB] border-[#E5E7EB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent">
                                 <SelectValue placeholder="Select token" />
                             </SelectTrigger>
                             <SelectContent className="focus:ring-0 focus:outline-none z-[99999]">
-                                <SelectItem value="usdc" >
+                                <SelectItem value={`${USDC_ON_SEPOLIA}`} >
                                     <span className="w-full uppercase flex flex-row items-center gap-1">
                                         <Image src={usdcIcon} className="mt-1" alt="USDC" width={22} height={22} />
                                         USDC
                                     </span>
                                 </SelectItem>
-                                <SelectItem value="usdt" className="flex-row items-center gap-2">
+                                <SelectItem value={`${USDT_ON_SEPOLIA}`} className="flex-row items-center gap-2">
                                     <span className="w-full uppercase flex flex-row items-center gap-1">
                                         <Image src={usdtIcon} className="mt-1" alt="USDT" width={22} height={22} />
                                         USDT
@@ -88,10 +145,16 @@ const EditPayrollSettings = () => {
                         </Select>
                     </div>
 
+
+                </div>
+
+                <div className="w-full grid md:grid-cols-2 md:gap-6 gap-4">
                     {/* stream frequency */}
                     <div className='w-full flex flex-col'>
                         <label htmlFor="frequency" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Stream frequency <span className="text-rose-600 mt-2">*</span></label>
                         <Select
+                            onValueChange={(value) =>
+                                setData((prev: any) => ({ ...prev, frequency: value }))}
                         >
                             <SelectTrigger className="focus:ring-0 focus:outline-none w-full rounded-[8px] border bg-[#F9FAFB] border-[#E5E7EB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent">
                                 <SelectValue placeholder="Select a frequency" />
@@ -103,18 +166,13 @@ const EditPayrollSettings = () => {
                                 <SelectItem value="weekly">
                                     Weekly(7 days)
                                 </SelectItem>
-                                <SelectItem value="bi-weekly">
-                                    Bi-Weekly(14 days)
-                                </SelectItem>
                                 <SelectItem value="monthly">
                                     Monthly(30 days)
                                 </SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
-                </div>
 
-                <div className="w-full grid md:grid-cols-2 md:gap-6 gap-4">
                     {/* stream start date */}
                     <div className='w-full flex flex-col'>
                         <label htmlFor="startDate" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Stream start date <span className="text-rose-600 mt-2">*</span></label>
@@ -126,34 +184,33 @@ const EditPayrollSettings = () => {
                                     )}
                                 >
                                     <CalendarIcon className="mr-2 h-4 w-4" />
-                                    {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                    {data.startDate
+                                        ? format(data.startDate, "PPP")
+                                        : <span>Pick a date</span>
+                                    }
                                 </button>
                             </PopoverTrigger>
                             <PopoverContent className="w-auto p-0">
                                 <Calendar
                                     mode="single"
-                                    selected={date}
-                                    onSelect={setDate}
+                                    selected={data.startDate || undefined}
+                                    onSelect={(selectedDate) => {
+                                        setData((prev: any) => ({
+                                            ...prev,
+                                            startDate: selectedDate,
+                                        }))
+                                    }}
                                     initialFocus
                                 />
                             </PopoverContent>
                         </Popover>
                     </div>
 
-                    {/* payment time */}
-                    <div className="w-full flex flex-col">
-                        <label htmlFor="paymentTime" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Payment time <span className="text-rose-600 mt-2">*</span></label>
-                        <input
-                            type="time"
-                            name="paymentTime"
-                            id="paymentTime"
-                            placeholder='00:00AM'
-                            className={`w-full rounded-[8px] border bg-[#F9FAFB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent border-[#E5E7EB]`} />
-                    </div>
+
                 </div>
 
                 {/* button */}
-                <button onClick={handleSave} type="button" className="self-end mt-3 w-[140px] h-[40px] flex justify-center items-center rounded-[8px] bg-accent text-[#FFFFFF] font-poppins font-[500] shadow-joinWaitlistBtnShadow z-10 text-shadow text-[14px] capitalize">Save changes</button>
+                <button onClick={handleClick} type="button" className="self-end mt-3 w-[97px] h-[40px] flex justify-center items-center rounded-[8px] bg-accent text-[#FFFFFF] font-poppins font-[500] shadow-joinWaitlistBtnShadow z-10 text-shadow text-[14px] capitalize">Save</button>
             </div>
         </section>
     )
