@@ -2,7 +2,7 @@
 
 import { wagmiAdapter, projectId } from '@/config'
 import { createAppKit } from '@reown/appkit/react'
-import { sepolia } from '@reown/appkit/networks'
+import { baseSepolia } from '@reown/appkit/networks'
 import React, { type ReactNode } from 'react'
 import { cookieToInitialState, WagmiProvider, type Config } from 'wagmi'
 import ReactQueryProvider from './ReactQueryProvider'
@@ -24,8 +24,8 @@ const metadata = {
 createAppKit({
     adapters: [wagmiAdapter],
     projectId,
-    networks: [sepolia],
-    defaultNetwork: sepolia,
+    networks: [baseSepolia],
+    defaultNetwork: baseSepolia,
     metadata: metadata,
     defaultAccountTypes: { eip155: "eoa" },
     features: {
