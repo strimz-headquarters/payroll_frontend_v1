@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Lock, Trash2, TriangleAlert } from 'lucide-react'
 import {
@@ -17,6 +17,9 @@ import {
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
+import { StrimzUD } from '@/types/auth'
+import { userManager } from '@/config/ManageUser'
+import { useAppKitAccount } from "@reown/appkit/react";
 
 // Validation schemas
 const NameSchema = Yup.object({
@@ -45,8 +48,19 @@ const ProfileChange = () => {
     const [isEditingEmail, setIsEditingEmail] = useState(false)
     const [isEditingPassword, setIsEditingPassword] = useState(false)
 
-    const [name, setName] = useState('John Doe')
-    const [email, setEmail] = useState('johndoe@gmail.com')
+    const [user, setUser] = useState<Partial<StrimzUD>>();
+
+    useEffect(() => {
+        const currentUser = userManager.getUser();
+        if (currentUser) {
+            setUser(currentUser);
+        }
+    }, []);
+
+    const [name, setName] = useState(user?.username || 'John Doe')
+    const [email, setEmail] = useState(user?.email || 'johndoe@gmail.com')
+
+    const { isConnected, address } = useAppKitAccount();
 
     const [showPassword, setShowPassword] = useState(false)
 
@@ -148,7 +162,13 @@ const ProfileChange = () => {
                 <div className="w-full flex items-center justify-between">
                     <div className="flex flex-col gap-0.5">
                         <h4 className="font-poppins font-[500] text-[14px] text-primary">Wallet</h4>
-                        <p className='font-poppins text-[14px] text-[#58556A]'>Wallet not connected</p>
+                        <p className='font-poppins text-[14px] text-[#58556A]'>
+                            {isConnected ? (
+                                <span className='text-primary'>{address}</span>
+                            ) : (
+                                <span className='text-[#58556A]'>Wallet not connected</span>
+                            )}
+                        </p>
                     </div>
                 </div>
             </main>

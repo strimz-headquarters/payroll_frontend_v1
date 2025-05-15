@@ -39,7 +39,7 @@ import { CiCalendar } from "react-icons/ci"
 import { PiCaretDown } from "react-icons/pi"
 import { BsThreeDotsVertical } from "react-icons/bs"
 import Link from "next/link"
-import { FiEdit, FiPause } from "react-icons/fi";
+import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { format } from "date-fns";
 import { USDC_ON_SEPOLIA } from "@/constants/Contracts";
@@ -130,10 +130,10 @@ const ActivePayroll = ({ data }: any) => {
                                     <DropdownMenuContent className="text-[#58556A] w-40 text-sm">
                                         <Link href="/user/payroll/edit" className="w-full flex items-center gap-1 text-sm px-2 py-1">
                                             <FiEdit className="w-4 h-4" />
-                                            <span>Edit Settings</span>
+                                            <span>Edit </span>
                                         </Link>
                                         <DropdownMenuSeparator />
-                                        <AlertDialog>
+                                        {/* <AlertDialog>
                                             <AlertDialogTrigger asChild>
                                                 <button className="w-full flex items-center gap-1 text-sm px-2 py-1">
                                                     <FiPause className="w-4 h-4" />
@@ -152,7 +152,7 @@ const ActivePayroll = ({ data }: any) => {
                                                     <AlertDialogAction className="bg-accent text-white">Continue</AlertDialogAction>
                                                 </AlertDialogFooter>
                                             </AlertDialogContent>
-                                        </AlertDialog>
+                                        </AlertDialog> */}
                                         <DropdownMenuSeparator />
                                         <AlertDialog>
                                             <AlertDialogTrigger asChild>
@@ -193,7 +193,6 @@ const ActivePayroll = ({ data }: any) => {
                                             <TableHead>Wallet Address</TableHead>
                                             <TableHead>Amount(s)</TableHead>
                                             <TableHead>Status</TableHead>
-                                            <TableHead>Action</TableHead>
                                         </TableRow>
                                     </TableHeader>
                                     <TableBody className="bg-white">
@@ -206,57 +205,6 @@ const ActivePayroll = ({ data }: any) => {
                                                     <span className="rounded-[8px] bg-[#F5FFFA] px-2 py-1 text-[#01753E]">
                                                         Active
                                                     </span>
-                                                </TableCell>
-                                                <TableCell className="text-nowrap text-[#8E8C9C] text-sm font-poppins font-[400]">
-                                                    <DropdownMenu>
-                                                        <DropdownMenuTrigger className="flex items-center gap-1 text-primary outline-none focus:outline-none focus:border-none">
-                                                            <BsThreeDotsVertical className="h-4 w-4" />
-                                                            <span className="sr-only">Toggle menu</span>
-                                                        </DropdownMenuTrigger>
-                                                        <DropdownMenuContent className="text-[#58556A] w-40 text-sm">
-                                                            <AlertDialog>
-                                                                <AlertDialogTrigger asChild>
-                                                                    <button className="w-full flex items-center gap-1 text-sm px-2 py-1">
-                                                                        <FiPause className="w-4 h-4" />
-                                                                        Pause payroll
-                                                                    </button>
-                                                                </AlertDialogTrigger>
-                                                                <AlertDialogContent>
-                                                                    <AlertDialogHeader>
-                                                                        <AlertDialogTitle>Are you sure ?</AlertDialogTitle>
-                                                                        <AlertDialogDescription>
-                                                                            Do you really want to pause this recipient&apos;s payroll ? If yes, click on continue
-                                                                        </AlertDialogDescription>
-                                                                    </AlertDialogHeader>
-                                                                    <AlertDialogFooter>
-                                                                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                                        <AlertDialogAction className="bg-accent text-white">Continue</AlertDialogAction>
-                                                                    </AlertDialogFooter>
-                                                                </AlertDialogContent>
-                                                            </AlertDialog>
-                                                            <DropdownMenuSeparator />
-                                                            <AlertDialog>
-                                                                <AlertDialogTrigger asChild>
-                                                                    <button className="w-full flex items-center gap-1 text-sm px-2 py-1">
-                                                                        <RiDeleteBin6Line className="w-4 h-4" />
-                                                                        Delete payroll
-                                                                    </button>
-                                                                </AlertDialogTrigger>
-                                                                <AlertDialogContent>
-                                                                    <AlertDialogHeader>
-                                                                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                                                        <AlertDialogDescription>
-                                                                            This action cannot be undone. This will permanently delete this recipient&apos;s payroll. If you want to go ahead, click on continue
-                                                                        </AlertDialogDescription>
-                                                                    </AlertDialogHeader>
-                                                                    <AlertDialogFooter>
-                                                                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                                        <AlertDialogAction className="bg-red-600 text-white">Continue</AlertDialogAction>
-                                                                    </AlertDialogFooter>
-                                                                </AlertDialogContent>
-                                                            </AlertDialog>
-                                                        </DropdownMenuContent>
-                                                    </DropdownMenu>
                                                 </TableCell>
                                             </TableRow>
                                         ))}
