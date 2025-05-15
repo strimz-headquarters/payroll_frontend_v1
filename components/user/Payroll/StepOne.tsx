@@ -19,6 +19,7 @@ import { format } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Calendar } from "@/components/ui/calendar"
+import { USDC_ON_SEPOLIA, USDT_ON_SEPOLIA } from "@/constants/Contracts";
 
 
 interface StepOneFormProps {
@@ -27,7 +28,6 @@ interface StepOneFormProps {
         token: string;
         frequency: string;
         startDate: Date | null;
-        // paymentTime: string;
     };
     setData: (newData: any) => void;
     handleClick: () => void;
@@ -55,7 +55,7 @@ const StepOneForm = ({ data, setData, handleClick }: StepOneFormProps) => {
             <div className="w-full flex flex-col">
                 <h5 className="uppercase font-[400] font-poppins text-[#58556A] text-xs">Step 1 of 2</h5>
                 <h2 className="font-[600] font-sora capitalize text-xl text-primary">Setup payroll</h2>
-                <p className="font-[400] font-poppins text-sm text-[#58556A]">Steup your payment timing and preference</p>
+                <p className="font-[400] font-poppins text-sm text-[#58556A]">Setup your payment timing and preference</p>
             </div>
 
             {/* inputs section */}
@@ -89,13 +89,13 @@ const StepOneForm = ({ data, setData, handleClick }: StepOneFormProps) => {
                                 <SelectValue placeholder="Select token" />
                             </SelectTrigger>
                             <SelectContent className="focus:ring-0 focus:outline-none z-[99999]">
-                                <SelectItem value="usdc" >
+                                <SelectItem value={`${USDC_ON_SEPOLIA}`} >
                                     <span className="w-full uppercase flex flex-row items-center gap-1">
                                         <Image src={usdcIcon} className="mt-1" alt="USDC" width={22} height={22} />
                                         USDC
                                     </span>
                                 </SelectItem>
-                                <SelectItem value="usdt" className="flex-row items-center gap-2">
+                                <SelectItem value={`${USDT_ON_SEPOLIA}`} className="flex-row items-center gap-2">
                                     <span className="w-full uppercase flex flex-row items-center gap-1">
                                         <Image src={usdtIcon} className="mt-1" alt="USDT" width={22} height={22} />
                                         USDT
@@ -166,18 +166,7 @@ const StepOneForm = ({ data, setData, handleClick }: StepOneFormProps) => {
                         </Popover>
                     </div>
 
-                    {/* payment time */}
-                    {/* <div className="w-full flex flex-col">
-                        <label htmlFor="paymentTime" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Stream start time <span className="text-rose-600 mt-2">*</span></label>
-                        <input
-                            type="time"
-                            name="startTime"
-                            id="startTime"
-                            placeholder='00:00AM'
-                            value={data.paymentTime}
-                            onChange={(e) => setData((prev: any) => ({ ...prev, paymentTime: e.target.value }))}
-                            className={`w-full rounded-[8px] border bg-[#F9FAFB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent border-[#E5E7EB]`} />
-                    </div> */}
+
                 </div>
 
                 {/* button */}

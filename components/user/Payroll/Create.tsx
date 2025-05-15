@@ -28,7 +28,6 @@ const Create = () => {
         token: '',
         frequency: '',
         startDate: null as Date | null,
-        // paymentTime: '',
     });
 
     // Validation for Step 1 inputs
@@ -38,7 +37,6 @@ const Create = () => {
             stepOneData.token &&
             stepOneData.frequency &&
             stepOneData.startDate
-            // stepOneData.paymentTime.trim()
         );
     };
 

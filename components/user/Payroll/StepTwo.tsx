@@ -32,7 +32,9 @@ import { toast } from "sonner";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { CVSDataType, TableDataType } from "@/types/dashboard";
 import { isAddress, getAddress } from 'viem';
-import usePayrollOperations from "@/controllers/usePayrollOps";
+import axiosInstanceWithToken from "@/config/AxiosInstance";
+import { useQueryClient } from "@tanstack/react-query";
+
 
 interface StepTwoFormProps {
     data: {
@@ -241,12 +243,11 @@ const StepTwoForm = ({ data: StepOneData, handleClick }: StepTwoFormProps) => {
 
     const [isSending, setIsSending] = useState(false);
 
-    const { mutateAsync: createPayroll } = usePayrollOperations();
+    const queryClient = useQueryClient();
 
     const handleSubmit = async () => {
         const req = {
             name: StepOneData.payrollName,
-            plan: localStorage.getItem("strimzPlan"),
             frequency: StepOneData.frequency,
             token: StepOneData.token,
             start_date: (() => {
@@ -262,17 +263,24 @@ const StepTwoForm = ({ data: StepOneData, handleClick }: StepTwoFormProps) => {
         try {
             setIsSending(true);
 
-            const response = await createPayroll(formattedReq);
+            const response = await axiosInstanceWithToken.post("payroll", formattedReq);
 
-            toast.success(response.message, {
-                position: "top-right",
-            });
-            router.push("/user/payroll");
+            if (response.data.success) {
+                toast.success(response.data.message, {
+                    position: "top-right",
+                });
+                console.log("data: ", response.data.data);
+
+                // Invalidate the payroll query to trigger refetch
+                queryClient.invalidateQueries({ queryKey: ["strimzPayrolls"] });
+
+                router.push("/user/payroll");
+            }
 
         } catch (error: any) {
-            console.error("Failed to create payroll:", error);
+            console.error("Failed to create payroll:", error.response?.data);
 
-            toast.error(error.response?.data?.message || "Failed to create payroll", {
+            toast.error(error.response?.data?.message || "An error occurred", {
                 position: "top-right",
             });
 

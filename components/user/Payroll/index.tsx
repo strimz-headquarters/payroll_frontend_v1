@@ -8,7 +8,6 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 import ActivePayroll from "./ActivePayroll"
-import PausedPayroll from "./PausedPayroll"
 import axiosInstanceWithToken from "@/config/AxiosInstance"
 import { useQuery } from "@tanstack/react-query";
 
@@ -110,10 +109,10 @@ const UserPayrolls = () => {
 
                         </TabsList>
                         <TabsContent value="activepayroll" className="mt-8 w-full">
-                            <ActivePayroll />
+                            <ActivePayroll data={strimzPayrolls} />
                         </TabsContent>
                         <TabsContent value="pausedpayroll" className="mt-8 w-full">
-                            <PausedPayroll />
+                            {/* <PausedPayroll /> */}
                         </TabsContent>
                     </Tabs>
                 </main>
