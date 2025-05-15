@@ -107,10 +107,15 @@ const SideBar = ({
             {/* <!-- Sidebar Footer --> */}
             <div className="w-full flex flex-col px-3 pb-8">
                 <div className="w-full flex flex-col justify-between h-[120px] alertGradient rounded-[12px] p-4">
-                    <p className="text-[#F9FAFB] font-[500] font-sora text-sm">Unlock more with a plan upgrade ⚡</p>
-                    <button type="button" onClick={() => router.push("/user/account/plan")} className="w-full h-[32px] flex justify-center items-center rounded-[8px] border border-[#E5E7EB] bg-[#F9FAFB] text-primary text-xs">Upgrade</button>
+                    <p className="text-[#F9FAFB] font-[500] text-center font-sora text-sm">Understand our fee structure ⚡</p>
+                    <button
+                        type="button"
+                        onClick={() => router.push("/user/account/fees")}
+                        className="w-full h-[32px] flex justify-center items-center rounded-[8px] font-poppins border border-[#E5E7EB] bg-[#F9FAFB] text-primary text-xs"
+                    >
+                        View Fee Details
+                    </button>
                 </div>
-
             </div>
         </aside>
     );
