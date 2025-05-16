@@ -8,7 +8,11 @@ export const DiamondABI = [
         type: "tuple[]",
         internalType: "struct IDiamondCut.FacetCut[]",
         components: [
-          { name: "facetAddress", type: "address", internalType: "address" },
+          {
+            name: "facetAddress",
+            type: "address",
+            internalType: "address",
+          },
           {
             name: "action",
             type: "uint8",
@@ -37,7 +41,11 @@ export const DiamondABI = [
         indexed: false,
         internalType: "struct IDiamondCut.FacetCut[]",
         components: [
-          { name: "facetAddress", type: "address", internalType: "address" },
+          {
+            name: "facetAddress",
+            type: "address",
+            internalType: "address",
+          },
           {
             name: "action",
             type: "uint8",
@@ -75,7 +83,11 @@ export const DiamondABI = [
         indexed: false,
         internalType: "struct IDiamondCut.FacetCut[]",
         components: [
-          { name: "facetAddress", type: "address", internalType: "address" },
+          {
+            name: "facetAddress",
+            type: "address",
+            internalType: "address",
+          },
           {
             name: "action",
             type: "uint8",
@@ -136,7 +148,11 @@ export const DiamondABI = [
     type: "function",
     name: "facetAddress",
     inputs: [
-      { name: "_functionSelector", type: "bytes4", internalType: "bytes4" },
+      {
+        name: "_functionSelector",
+        type: "bytes4",
+        internalType: "bytes4",
+      },
     ],
     outputs: [
       { name: "facetAddress_", type: "address", internalType: "address" },
@@ -148,7 +164,11 @@ export const DiamondABI = [
     name: "facetAddresses",
     inputs: [],
     outputs: [
-      { name: "facetAddresses_", type: "address[]", internalType: "address[]" },
+      {
+        name: "facetAddresses_",
+        type: "address[]",
+        internalType: "address[]",
+      },
     ],
     stateMutability: "view",
   },
@@ -175,7 +195,11 @@ export const DiamondABI = [
         type: "tuple[]",
         internalType: "struct IDiamondLoupe.Facet[]",
         components: [
-          { name: "facetAddress", type: "address", internalType: "address" },
+          {
+            name: "facetAddress",
+            type: "address",
+            internalType: "address",
+          },
           {
             name: "functionSelectors",
             type: "bytes4[]",
@@ -243,7 +267,11 @@ export const DiamondABI = [
       },
       { name: "_token", type: "address", internalType: "address" },
       { name: "_start_date", type: "uint256", internalType: "uint256" },
-      { name: "_frequency", type: "uint8", internalType: "enum Frequency" },
+      {
+        name: "_frequency",
+        type: "uint8",
+        internalType: "enum Frequency",
+      },
     ],
     stateMutability: "nonpayable",
   },
@@ -267,30 +295,7 @@ export const DiamondABI = [
     outputs: [],
     stateMutability: "nonpayable",
   },
-  {
-    type: "function",
-    name: "contractTokenBalances",
-    inputs: [{ name: "", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "deposit",
-    inputs: [
-      { name: "_token", type: "address", internalType: "address" },
-      { name: "amount", type: "uint256", internalType: "uint256" },
-    ],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "disburse",
-    inputs: [],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
+
   {
     type: "function",
     name: "getFrequency",
@@ -326,7 +331,11 @@ export const DiamondABI = [
     outputs: [
       { name: "_token", type: "address", internalType: "address" },
       { name: "_status", type: "uint8", internalType: "enum Status" },
-      { name: "_frequency", type: "uint8", internalType: "enum Frequency" },
+      {
+        name: "_frequency",
+        type: "uint8",
+        internalType: "enum Frequency",
+      },
       { name: "_lastPayroll", type: "uint256", internalType: "uint256" },
       { name: "_startDate", type: "uint256", internalType: "uint256" },
     ],
@@ -381,20 +390,17 @@ export const DiamondABI = [
   },
   {
     type: "function",
-    name: "getUserBalance",
-    inputs: [
-      { name: "user", type: "address", internalType: "address" },
-      { name: "_token", type: "address", internalType: "address" },
-    ],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
     name: "getYear",
     inputs: [{ name: "timestamp", type: "uint256", internalType: "uint256" }],
     outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
     stateMutability: "pure",
+  },
+  {
+    type: "function",
+    name: "get_token",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
   },
   {
     type: "function",
@@ -407,7 +413,11 @@ export const DiamondABI = [
     type: "function",
     name: "remove_receipients",
     inputs: [
-      { name: "_receipients", type: "address[]", internalType: "address[]" },
+      {
+        name: "_receipients",
+        type: "address[]",
+        internalType: "address[]",
+      },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -416,7 +426,11 @@ export const DiamondABI = [
     type: "function",
     name: "update_frequency",
     inputs: [
-      { name: "_frequency", type: "uint8", internalType: "enum Frequency" },
+      {
+        name: "_frequency",
+        type: "uint8",
+        internalType: "enum Frequency",
+      },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -436,20 +450,15 @@ export const DiamondABI = [
     stateMutability: "nonpayable",
   },
   {
-    type: "function",
-    name: "withdraw",
-    inputs: [
-      { name: "_token", type: "address", internalType: "address" },
-      { name: "amount", type: "uint256", internalType: "uint256" },
-    ],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
     type: "event",
     name: "Deposit",
     inputs: [
-      { name: "from", type: "address", indexed: true, internalType: "address" },
+      {
+        name: "from",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
       {
         name: "tokenAddress",
         type: "address",
@@ -520,7 +529,12 @@ export const DiamondABI = [
     type: "event",
     name: "Withdrawal",
     inputs: [
-      { name: "to", type: "address", indexed: true, internalType: "address" },
+      {
+        name: "to",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
       {
         name: "tokenAddress",
         type: "address",
@@ -559,7 +573,7 @@ export const DiamondABI = [
           { name: "valid", type: "bool", internalType: "bool" },
         ],
       },
-      { name: "_title", type: "string", internalType: "string" },
+      { name: "_title", type: "bytes32", internalType: "bytes32" },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -567,25 +581,14 @@ export const DiamondABI = [
   {
     type: "function",
     name: "delete_payroll",
-    inputs: [{ name: "_title", type: "string", internalType: "string" }],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "deposit",
-    inputs: [
-      { name: "_token", type: "address", internalType: "address" },
-      { name: "amount", type: "uint256", internalType: "uint256" },
-      { name: "_title", type: "string", internalType: "string" },
-    ],
+    inputs: [{ name: "_title", type: "bytes32", internalType: "bytes32" }],
     outputs: [],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
     name: "disburse",
-    inputs: [{ name: "_title", type: "string", internalType: "string" }],
+    inputs: [{ name: "_title", type: "bytes32", internalType: "bytes32" }],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -599,12 +602,28 @@ export const DiamondABI = [
         type: "tuple[]",
         internalType: "struct PayrollInfo[]",
         components: [
-          { name: "payrollAddress", type: "address", internalType: "address" },
-          { name: "ownerAddress", type: "address", internalType: "address" },
-          { name: "title", type: "string", internalType: "string" },
+          {
+            name: "payrollAddress",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "ownerAddress",
+            type: "address",
+            internalType: "address",
+          },
+          { name: "title", type: "bytes32", internalType: "bytes32" },
           { name: "status", type: "uint8", internalType: "enum Status" },
-          { name: "frequency", type: "uint8", internalType: "enum Frequency" },
-          { name: "tokenAddress", type: "address", internalType: "address" },
+          {
+            name: "frequency",
+            type: "uint8",
+            internalType: "enum Frequency",
+          },
+          {
+            name: "tokenAddress",
+            type: "address",
+            internalType: "address",
+          },
         ],
       },
     ],
@@ -620,12 +639,28 @@ export const DiamondABI = [
         type: "tuple[]",
         internalType: "struct PayrollInfo[]",
         components: [
-          { name: "payrollAddress", type: "address", internalType: "address" },
-          { name: "ownerAddress", type: "address", internalType: "address" },
-          { name: "title", type: "string", internalType: "string" },
+          {
+            name: "payrollAddress",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "ownerAddress",
+            type: "address",
+            internalType: "address",
+          },
+          { name: "title", type: "bytes32", internalType: "bytes32" },
           { name: "status", type: "uint8", internalType: "enum Status" },
-          { name: "frequency", type: "uint8", internalType: "enum Frequency" },
-          { name: "tokenAddress", type: "address", internalType: "address" },
+          {
+            name: "frequency",
+            type: "uint8",
+            internalType: "enum Frequency",
+          },
+          {
+            name: "tokenAddress",
+            type: "address",
+            internalType: "address",
+          },
         ],
       },
     ],
@@ -634,19 +669,35 @@ export const DiamondABI = [
   {
     type: "function",
     name: "getFullPayrollInfo",
-    inputs: [{ name: "_title", type: "string", internalType: "string" }],
+    inputs: [{ name: "_title", type: "bytes32", internalType: "bytes32" }],
     outputs: [
       {
         name: "info",
         type: "tuple",
         internalType: "struct PayrollInfo",
         components: [
-          { name: "payrollAddress", type: "address", internalType: "address" },
-          { name: "ownerAddress", type: "address", internalType: "address" },
-          { name: "title", type: "string", internalType: "string" },
+          {
+            name: "payrollAddress",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "ownerAddress",
+            type: "address",
+            internalType: "address",
+          },
+          { name: "title", type: "bytes32", internalType: "bytes32" },
           { name: "status", type: "uint8", internalType: "enum Status" },
-          { name: "frequency", type: "uint8", internalType: "enum Frequency" },
-          { name: "tokenAddress", type: "address", internalType: "address" },
+          {
+            name: "frequency",
+            type: "uint8",
+            internalType: "enum Frequency",
+          },
+          {
+            name: "tokenAddress",
+            type: "address",
+            internalType: "address",
+          },
         ],
       },
       {
@@ -661,7 +712,11 @@ export const DiamondABI = [
         ],
       },
       { name: "totalAmount", type: "uint256", internalType: "uint256" },
-      { name: "lastPayrollDate", type: "uint256", internalType: "uint256" },
+      {
+        name: "lastPayrollDate",
+        type: "uint256",
+        internalType: "uint256",
+      },
     ],
     stateMutability: "view",
   },
@@ -670,7 +725,7 @@ export const DiamondABI = [
     name: "getPayrollAddress",
     inputs: [
       { name: "cowner", type: "address", internalType: "address" },
-      { name: "title", type: "string", internalType: "string" },
+      { name: "title", type: "bytes32", internalType: "bytes32" },
     ],
     outputs: [{ name: "", type: "address", internalType: "address" }],
     stateMutability: "view",
@@ -678,11 +733,15 @@ export const DiamondABI = [
   {
     type: "function",
     name: "getPayrollDetails",
-    inputs: [{ name: "_title", type: "string", internalType: "string" }],
+    inputs: [{ name: "_title", type: "bytes32", internalType: "bytes32" }],
     outputs: [
       { name: "_token", type: "address", internalType: "address" },
       { name: "_status", type: "uint8", internalType: "enum Status" },
-      { name: "_frequency", type: "uint8", internalType: "enum Frequency" },
+      {
+        name: "_frequency",
+        type: "uint8",
+        internalType: "enum Frequency",
+      },
       { name: "_lastPayroll", type: "uint256", internalType: "uint256" },
       { name: "_startDate", type: "uint256", internalType: "uint256" },
     ],
@@ -691,7 +750,7 @@ export const DiamondABI = [
   {
     type: "function",
     name: "getPayrollOwner",
-    inputs: [{ name: "_title", type: "string", internalType: "string" }],
+    inputs: [{ name: "_title", type: "bytes32", internalType: "bytes32" }],
     outputs: [{ name: "", type: "address", internalType: "address" }],
     stateMutability: "view",
   },
@@ -705,12 +764,28 @@ export const DiamondABI = [
         type: "tuple[]",
         internalType: "struct PayrollInfo[]",
         components: [
-          { name: "payrollAddress", type: "address", internalType: "address" },
-          { name: "ownerAddress", type: "address", internalType: "address" },
-          { name: "title", type: "string", internalType: "string" },
+          {
+            name: "payrollAddress",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "ownerAddress",
+            type: "address",
+            internalType: "address",
+          },
+          { name: "title", type: "bytes32", internalType: "bytes32" },
           { name: "status", type: "uint8", internalType: "enum Status" },
-          { name: "frequency", type: "uint8", internalType: "enum Frequency" },
-          { name: "tokenAddress", type: "address", internalType: "address" },
+          {
+            name: "frequency",
+            type: "uint8",
+            internalType: "enum Frequency",
+          },
+          {
+            name: "tokenAddress",
+            type: "address",
+            internalType: "address",
+          },
         ],
       },
     ],
@@ -728,20 +803,30 @@ export const DiamondABI = [
   },
   {
     type: "function",
-    name: "getUserBalance",
-    inputs: [
-      { name: "_user", type: "address", internalType: "address" },
-      { name: "_token", type: "address", internalType: "address" },
-      { name: "_title", type: "string", internalType: "string" },
+    name: "getUserHistory",
+    inputs: [{ name: "user", type: "address", internalType: "address" }],
+    outputs: [
+      {
+        name: "",
+        type: "tuple[]",
+        internalType: "struct History[]",
+        components: [
+          { name: "success", type: "bool", internalType: "bool" },
+          { name: "owner", type: "address", internalType: "address" },
+          { name: "timestamp", type: "uint256", internalType: "uint256" },
+          { name: "amount", type: "uint256", internalType: "uint256" },
+          { name: "title", type: "bytes32", internalType: "bytes32" },
+          { name: "token", type: "address", internalType: "address" },
+        ],
+      },
     ],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
     stateMutability: "view",
   },
   {
     type: "function",
     name: "new_payroll",
     inputs: [
-      { name: "_title", type: "string", internalType: "string" },
+      { name: "_title", type: "bytes32", internalType: "bytes32" },
       {
         name: "_receipients",
         type: "tuple[]",
@@ -755,7 +840,11 @@ export const DiamondABI = [
       },
       { name: "_token", type: "address", internalType: "address" },
       { name: "_start_date", type: "uint256", internalType: "uint256" },
-      { name: "_frequency", type: "uint8", internalType: "enum Frequency" },
+      {
+        name: "_frequency",
+        type: "uint8",
+        internalType: "enum Frequency",
+      },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -771,8 +860,12 @@ export const DiamondABI = [
     type: "function",
     name: "remove_receipients",
     inputs: [
-      { name: "_receipients", type: "address[]", internalType: "address[]" },
-      { name: "_title", type: "string", internalType: "string" },
+      {
+        name: "_receipients",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      { name: "_title", type: "bytes32", internalType: "bytes32" },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -781,8 +874,12 @@ export const DiamondABI = [
     type: "function",
     name: "update_frequency",
     inputs: [
-      { name: "_frequency", type: "uint8", internalType: "enum Frequency" },
-      { name: "_title", type: "string", internalType: "string" },
+      {
+        name: "_frequency",
+        type: "uint8",
+        internalType: "enum Frequency",
+      },
+      { name: "_title", type: "bytes32", internalType: "bytes32" },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -792,7 +889,7 @@ export const DiamondABI = [
     name: "update_status",
     inputs: [
       { name: "_status", type: "uint8", internalType: "enum Status" },
-      { name: "_title", type: "string", internalType: "string" },
+      { name: "_title", type: "bytes32", internalType: "bytes32" },
     ],
     outputs: [],
     stateMutability: "nonpayable",
@@ -802,22 +899,53 @@ export const DiamondABI = [
     name: "update_token",
     inputs: [
       { name: "_token", type: "address", internalType: "address" },
-      { name: "_title", type: "string", internalType: "string" },
+      { name: "_title", type: "bytes32", internalType: "bytes32" },
     ],
     outputs: [],
     stateMutability: "nonpayable",
   },
   {
-    type: "function",
-    name: "withdraw",
+    type: "event",
+    name: "Disburse",
     inputs: [
-      { name: "_receipient", type: "address", internalType: "address" },
-      { name: "_token", type: "address", internalType: "address" },
-      { name: "amount", type: "uint256", internalType: "uint256" },
-      { name: "_title", type: "string", internalType: "string" },
+      {
+        name: "success",
+        type: "bool",
+        indexed: true,
+        internalType: "bool",
+      },
+      {
+        name: "owner",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "timestamp",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "title",
+        type: "bytes32",
+        indexed: false,
+        internalType: "bytes32",
+      },
+      {
+        name: "token",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
     ],
-    outputs: [],
-    stateMutability: "nonpayable",
+    anonymous: false,
   },
   {
     type: "event",
@@ -829,7 +957,12 @@ export const DiamondABI = [
         indexed: true,
         internalType: "address",
       },
-      { name: "title", type: "string", indexed: true, internalType: "string" },
+      {
+        name: "title",
+        type: "bytes32",
+        indexed: true,
+        internalType: "bytes32",
+      },
       {
         name: "timestamp",
         type: "uint256",

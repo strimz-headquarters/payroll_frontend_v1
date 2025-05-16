@@ -3,3 +3,5 @@ export const USDC_DECIMALS = 6;
 
 export const USDT_ON_SEPOLIA = "0x00D1C02E008D594ebEFe3F3b7fd175850f96AEa0";
 export const USDT_DECIMALS = 6;
+
+export const DIAMOND_ADDRESS = "0x8abac80ffb06a27c1abbf8284f2178b77129d21b";
