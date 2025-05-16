@@ -61,8 +61,6 @@ const UserPayrolls = () => {
 
     const { rows: strimzPayrolls = [], count: numOfPayrolls = 0 } = payrollData || {};
 
-    console.log("Payrolls data:", strimzPayrolls);
-
     return (
         <section className="w-full flex flex-col">
             <div className="w-full flex md:flex-row flex-col justify-between md:items-center">
