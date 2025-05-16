@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Footer from "@/components/dashboard_shared/Footer";
@@ -28,13 +29,56 @@ export default function UserLayout({
 
     const router = useRouter();
 
-    // Session validation
+
     useEffect(() => {
-        const currentUser = userManager.getUser();
-        if (!currentUser?.verified) {
-            userManager.clearSession();
-            router.push('/login');
-        }
+        const cleanup = userManager.initialize();
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+            // Use window.performance directly with type assertion
+            const navigation = window.performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+
+            // Only clear session on actual window close
+            if (navigation.type !== 'reload') {
+                userManager.clearSession();
+            }
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            cleanup();
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+
+    // Enhanced verification check
+    useEffect(() => {
+        // Enhanced session validation with proper typing
+        const validateSession = () => {
+            const currentUser = userManager.getUser();
+
+            // Explicit type for session data
+            type UserSession = {
+                verified: boolean;
+                expiration: number;
+                [key: string]: any;
+            };
+
+            const sessionData = currentUser as UserSession | null;
+            const isValidSession = sessionData?.verified && Date.now() < (sessionData?.expiration || 0);
+
+            if (!isValidSession) {
+                userManager.clearSession();
+                router.push('/login');
+            }
+        };
+
+        // Validate on mount and periodically
+        validateSession();
+        const interval = setInterval(validateSession, 300000); // 5 mins
+
+        return () => clearInterval(interval);
     }, [router]);
 
     return (

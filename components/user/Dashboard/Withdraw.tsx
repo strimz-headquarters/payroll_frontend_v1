@@ -20,6 +20,9 @@ import usdtIcon from "@/public/brands/USDT.svg"
 import Image from "next/image";
 import useWithdrawFunds from "@/controllers/useWithdrawFunds";
 import { useState } from "react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { toast } from "sonner";
+import { isAddress } from "viem";
 
 /**
  * Withdraw is a dialog component that facilitates the process of withdrawing funds from a wallet.
@@ -40,13 +43,45 @@ const Withdraw = () => {
 
     const [amount, setAmount] = useState<string>("");
     const [token, setToken] = useState<string>("");
+    const [recipient, setRecipient] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [showPassword, setShowPassword] = useState<boolean>(false);
 
     const handleFundWithdrawal = () => {
-        if (!token || !amount) return;
+        if (!token) {
+            toast.error("Please select a token", {
+                position: "top-right",
+            });
+            return;
+        }
+        if (!recipient) {
+            toast.error("Please enter a recipient address", {
+                position: "top-right",
+            });
+            return;
+        }
+        if (isAddress(recipient) === false) {
+            toast.error("Please enter a valid recipient address", {
+                position: "top-right",
+            });
+            return;
+        }
+        if (!password) {
+            toast.error("Please enter your password", {
+                position: "top-right",
+            });
+            return;
+        }
+        if (!amount) {
+            toast.error("Please enter an amount", {
+                position: "top-right",
+            });
+            return;
+        }
         const numericAmount = parseFloat(amount);
         if (isNaN(numericAmount) || numericAmount <= 0) return;
 
-        withdrawFunds(token, numericAmount);
+        withdrawFunds(password, token, numericAmount, recipient);
     };
 
     return (
@@ -100,6 +135,46 @@ const Withdraw = () => {
                         <input type="number" name="amount" value={amount}
                             onChange={(e) => setAmount(e.target.value)} id="amount" placeholder='$ 0.00' className={`w-full rounded-[8px] border bg-[#F9FAFB] border-[#E5E7EB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent`} />
 
+                    </div>
+
+                    {/* recipient */}
+                    <div className='w-full flex flex-col'>
+                        <label htmlFor="recipient" className="font-poppins text-[14px] text-[#58556A] leading-[24px]">Recipient</label>
+                        <input type="text" name="recipient" value={recipient}
+                            onChange={(e) => setRecipient(e.target.value)} id="recipient" placeholder='0x1234abc...' className={`w-full rounded-[8px] border bg-[#F9FAFB] border-[#E5E7EB] shadow-navbarShadow h-[44px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent`} />
+
+                    </div>
+
+                    {/* Password */}
+                    <div className="w-full flex flex-col">
+                        <label
+                            htmlFor="password"
+                            className="font-poppins text-[14px] text-[#58556A] leading-[24px]"
+                        >
+                            Password
+                        </label>
+                        <div className="relative w-full h-[44px]">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                id="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className={`w-full rounded-[8px] border bg-[#F9FAFB] shadow-navbarShadow h-full font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] pl-4 pr-14 outline-none transition duration-300 focus:border-accent border-[#E5E7EB]`}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword((prev) => !prev)}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#58556A]"
+                            >
+                                {showPassword ? (
+                                    <FaRegEyeSlash className="w-5 h-5" />
+                                ) : (
+                                    <FaRegEye className="w-5 h-5" />
+                                )}
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <DialogFooter>

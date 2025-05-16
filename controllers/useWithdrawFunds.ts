@@ -1,102 +1,52 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IERC20ABI } from "@/constants/ABIs/IERC20ABI";
+import axiosInstanceWithToken from "@/config/AxiosInstance";
 import { USDC_ON_SEPOLIA, USDT_ON_SEPOLIA } from "@/constants/Contracts";
-import { useAppKitAccount, useAppKitNetwork } from "@reown/appkit/react";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { toast } from "sonner";
-import { parseUnits } from "viem";
-import { baseSepolia } from "viem/chains";
-import {
-  useWaitForTransactionReceipt,
-  useWriteContract,
-  type BaseError,
-} from "wagmi";
 
 const useWithdrawFunds = () => {
-  const { address, isConnected } = useAppKitAccount();
-  const { chainId } = useAppKitNetwork();
-
-  const { data: hash, error, writeContract } = useWriteContract();
-
-  const usdc_contract_address = USDC_ON_SEPOLIA;
-  const usdt_contract_address = USDT_ON_SEPOLIA;
-
   const withdrawFunds = useCallback(
-    async (token: string, amount: number) => {
+    async (
+      password: string,
+      token: string,
+      amount: number,
+      recipient: string
+    ) => {
       try {
-        if (!isConnected) {
-          toast.error("Please connect your wallet to withdraw funds", {
+        const tokenType = token === "usdc" ? USDC_ON_SEPOLIA : USDT_ON_SEPOLIA;
+
+        const reqObj = {
+          password,
+          amount: String(amount),
+          receipient: recipient,
+          token: tokenType,
+        };
+
+        const formattedReq = JSON.stringify(reqObj);
+
+        console.log("formattedReq: ", formattedReq);
+
+        const response = await axiosInstanceWithToken.post(
+          `users/withdraw`,
+          formattedReq
+        );
+
+        if (response.data.success) {
+          toast.success(response.data.message, {
             position: "top-right",
           });
-          return;
+          console.log("data: ", response.data.data);
         }
-        if (chainId !== baseSepolia.id) {
-          toast.error("Please switch to BaseSepolia", {
-            position: "top-right",
-          });
-          return;
-        }
-        if (amount <= 0) {
-          toast.error("Amount must be greater than 0", {
-            position: "top-right",
-          });
-          return;
-        }
-
-        const contract_address =
-          token === "usdc" ? usdc_contract_address : usdt_contract_address;
-
-        const parsedAmount = parseUnits(amount.toFixed(6), 6); // USDC and USDT have 6 decimals
-
-        writeContract({
-          address: contract_address as `0x${string}`,
-          abi: IERC20ABI,
-          functionName: "transfer",
-          args: [address as `0x${string}`, parsedAmount],
-        });
       } catch (error: any) {
-        toast.error(error.message, { position: "top-right" });
+        console.error("Failed to withdraw:", error.response?.data);
+
+        toast.error(error.response?.data?.message || "An error occurred", {
+          position: "top-right",
+        });
       }
     },
-    [
-      chainId,
-      isConnected,
-      usdc_contract_address,
-      usdt_contract_address,
-      writeContract,
-      address,
-    ]
+    []
   );
-
-  const { isLoading: isConfirming, isSuccess: isConfirmed } =
-    useWaitForTransactionReceipt({
-      hash,
-    });
-
-  const toastId = "withdraw-toast";
-
-  useEffect(() => {
-    if (isConfirming) {
-      toast.loading("Processing...", {
-        id: toastId,
-        position: "top-right",
-      });
-    }
-
-    if (isConfirmed) {
-      toast.success("Withdraw successful", {
-        id: toastId,
-        position: "top-right",
-      });
-    }
-
-    if (error) {
-      toast.error((error as BaseError).shortMessage || error.message, {
-        id: toastId,
-        position: "top-right",
-      });
-    }
-  }, [isConfirmed, error, isConfirming]);
 
   return {
     withdrawFunds,

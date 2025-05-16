@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Lock, Trash2, TriangleAlert } from 'lucide-react'
 import {
@@ -16,9 +17,10 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
+import { FaCheck, FaCopy, FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
 import { userManager } from '@/config/ManageUser'
 import { useAppKitAccount } from "@reown/appkit/react";
+import axiosInstanceWithToken from '@/config/AxiosInstance'
 
 // Validation schemas
 const NameSchema = Yup.object({
@@ -61,6 +63,21 @@ const ProfileChange = () => {
     const { isConnected, address } = useAppKitAccount();
 
     const [showPassword, setShowPassword] = useState(false)
+
+    // For exporting private key
+    const [pkey, setPkey] = useState('');
+    const [copied, setCopied] = useState(false);
+    const [error, setError] = useState('');
+    const [showPassword2, setShowPassword2] = useState(false);
+    const timeoutRef = useRef<NodeJS.Timeout>();
+
+    // Clear timeout on component unmount
+    useEffect(() => {
+        const timeout = timeoutRef.current;
+        return () => {
+            if (timeout) clearTimeout(timeout);
+        };
+    }, []);
 
     const handleNameUpdate = (values: { name: string }) => {
         setName(values.name)
@@ -229,6 +246,111 @@ const ProfileChange = () => {
                                 Edit
                             </button>
                         )}
+                    </div>
+                </div>
+
+                {/* Export Private Key */}
+                <div className="w-full flex flex-col gap-2 relative">
+                    <div className="w-full flex items-center justify-between">
+                        <div className="w-full flex flex-col gap-0.5 relative">
+                            <h4 className="font-poppins font-[500] text-[14px] text-primary">
+                                Export Private Key
+                            </h4>
+
+                            <Formik
+                                initialValues={{ password: '' }}
+                                validationSchema={PasswordSchema}
+                                onSubmit={async (values, { resetForm }) => {
+
+                                    const req = JSON.stringify({
+                                        password: values.password
+                                    })
+
+                                    try {
+                                        const response = await axiosInstanceWithToken.post('users/export-wallet', req);
+
+                                        if (response.data.success) {
+                                            setPkey(response.data.data.privateKey);
+                                            resetForm();
+                                            // Auto-clear after 30 seconds
+                                            setTimeout(() => setPkey(''), 30000);
+                                        }
+                                    } catch (error: any) {
+                                        console.log(error);
+                                        setError(error.response?.data?.message || 'Invalid password or server error');
+                                    }
+                                }}
+                            >
+                                {({ isSubmitting, handleSubmit }) => (
+                                    <Form onSubmit={handleSubmit} className='w-full flex flex-col gap-1 relative'>
+                                        <div className="relative">
+                                            <Field
+                                                type={showPassword2 ? "text" : "password"}
+                                                name="password"
+                                                placeholder="Enter your password"
+                                                className="w-full rounded-[8px] border bg-[#F9FAFB] shadow-navbarShadow h-[40px] font-poppins text-[14px] placeholder:text-[14px] placeholder:text-[#8E8C9C] text-[#8E8C9C] px-4 outline-none transition duration-300 focus:border-accent border-[#E5E7EB]"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowPassword2((prev) => !prev)}
+                                                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#58556A]"
+                                            >
+                                                {showPassword2 ? (
+                                                    <FaRegEyeSlash className="w-5 h-5" />
+                                                ) : (
+                                                    <FaRegEye className="w-5 h-5" />
+                                                )}
+                                            </button>
+                                        </div>
+                                        <ErrorMessage name="password" component="p" className="text-xs text-rose-600" />
+
+                                        {pkey && (
+                                            <div className="mt-2 p-3 bg-red-50 rounded-md relative">
+                                                <div className="flex items-center justify-between">
+                                                    <span className="font-sora text-sm">
+                                                        {`${pkey.slice(0, 6)}...${pkey.slice(-5)}`}
+                                                    </span>
+                                                    <Button
+                                                        type="button"
+                                                        size={"icon"}
+                                                        onClick={() => {
+                                                            navigator.clipboard.writeText(pkey);
+                                                            setCopied(true);
+                                                            setTimeout(() => setCopied(false), 2000);
+                                                        }}
+                                                        className="bg-accent text-white hover:bg-accent"
+                                                    >
+                                                        {copied ? (
+                                                            <FaCheck className="w-4 h-4" />
+                                                        ) : (
+                                                            <FaCopy className="w-4 h-4" />
+                                                        )}
+                                                    </Button>
+                                                </div>
+                                                <div className="text-xs text-red-600 mt-1">
+                                                    Warning: This will be cleared in 30 seconds. Store it securely!
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {error && (
+                                            <div className="text-red-500 text-sm mt-1">{error}</div>
+                                        )}
+
+                                        <div className='flex gap-2 mt-1'>
+                                            <Button
+                                                size="sm"
+                                                className='bg-accent text-white hover:bg-accent'
+                                                type="submit"
+                                                disabled={isSubmitting}
+                                            >
+                                                {isSubmitting ? 'Processing...' : 'Get Key'}
+                                            </Button>
+                                        </div>
+                                    </Form>
+                                )}
+                            </Formik>
+                        </div>
                     </div>
                 </div>
             </main>
