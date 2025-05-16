@@ -5,7 +5,7 @@ import { useAppKitAccount, useAppKitNetwork } from "@reown/appkit/react";
 import { useCallback, useEffect } from "react";
 import { toast } from "sonner";
 import { parseUnits } from "viem";
-import { sepolia } from "viem/chains";
+import { baseSepolia } from "viem/chains";
 import {
   useWaitForTransactionReceipt,
   useWriteContract,
@@ -30,8 +30,8 @@ const useWithdrawFunds = () => {
           });
           return;
         }
-        if (chainId !== sepolia.id) {
-          toast.error("Please switch to Sepolia Testnet", {
+        if (chainId !== baseSepolia.id) {
+          toast.error("Please switch to BaseSepolia", {
             position: "top-right",
           });
           return;

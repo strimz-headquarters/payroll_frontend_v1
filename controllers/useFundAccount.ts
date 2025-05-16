@@ -6,7 +6,7 @@ import { useAppKitAccount, useAppKitNetwork } from "@reown/appkit/react";
 import { useCallback, useEffect } from "react";
 import { toast } from "sonner";
 import { parseUnits } from "viem";
-import { sepolia } from "viem/chains";
+import { baseSepolia } from "viem/chains";
 import {
   useWaitForTransactionReceipt,
   useWriteContract,
@@ -33,12 +33,12 @@ const useFundAccount = () => {
           });
           return;
         }
-        if (chainId !== sepolia.id) {
-          toast.error("Please switch to Sepolia Testnet", {
-            position: "top-right",
-          });
-          return;
-        }
+        // if (chainId !== baseSepolia.id) {
+        //   toast.error("Please switch to BaseSepolia", {
+        //     position: "top-right",
+        //   });
+        //   return;
+        // }
         if (amount <= 0) {
           toast.error("Amount must be greater than 0", {
             position: "top-right",
@@ -62,7 +62,6 @@ const useFundAccount = () => {
       }
     },
     [
-      chainId,
       isConnected,
       usdc_contract_address,
       usdt_contract_address,
