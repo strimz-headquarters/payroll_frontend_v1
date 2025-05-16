@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import WalletFundTx from "./WalletFundTx"
 import PayrollTx from "./PayrollTx"
 import WithdrawalTx from "./WithdrawalTx"
@@ -23,16 +24,16 @@ const AllTx = ({ logs }: Props) => {
             {
                 logs.map(log => {
                     if (log.title === "Payroll") {
-                        return <PayrollTx title={`${log.subtitle} payroll`} date={formatDate(log.timestamp)} amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
+                        return <PayrollTx key={log.timestamp} title={`${log.subtitle} payroll`} date={formatDate(log.timestamp)} amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
                     }
 
                     if (log.title === "Fund") {
-                        return <WalletFundTx title={`${getTokenName(log.token)} Wallet funding`} date="" amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
+                        return <WalletFundTx key={log.timestamp} title={`${getTokenName(log.token)} Wallet funding`} date="" amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
                     }
 
 
                     if (log.title === "Withdraw") {
-                        return <WithdrawalTx title={`Withdrawal from ${getTokenName(log.token)} wallet`} date="" amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
+                        return <WithdrawalTx key={log.timestamp} title={`Withdrawal from ${getTokenName(log.token)} wallet`} date="" amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
                     }
 
 

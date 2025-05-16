@@ -65,7 +65,7 @@ const TxHistory = () => {
 
                             {
                                 logs.filter(log => log.title === "Payroll").map(log => {
-                                    return <PayrollTx title={`${log.subtitle} payroll`} date={formatDate(log.timestamp)} amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
+                                    return <PayrollTx key={log.timestamp} title={`${log.subtitle} payroll`} date={formatDate(log.timestamp)} amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
                                 })
                             }
                             {/* payroll */}
@@ -76,7 +76,7 @@ const TxHistory = () => {
 
                             {
                                 logs.filter(log => log.title === "Fund").map(log => {
-                                    return <WalletFundTx title={`${getTokenName(log.token)} Wallet funding`} date="" amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
+                                    return <WalletFundTx key={log.timestamp} title={`${getTokenName(log.token)} Wallet funding`} date="" amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
                                 })
                             }
                             {/* walletfunding */}
@@ -87,7 +87,7 @@ const TxHistory = () => {
 
                             {
                                 logs.filter(log => log.title === "Withdraw").map(log => {
-                                    return <WithdrawalTx title={`Withdrawal from ${getTokenName(log.token)} wallet`} date="" amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
+                                    return <WithdrawalTx key={log.timestamp} title={`Withdrawal from ${getTokenName(log.token)} wallet`} date="" amount={Number(formatUnits(log.amount)).toLocaleString()} status={log.success ? "Completed" : "Failed"} token={getTokenName(log.token)} />
                                 })
                             }
                             {/* widthdrawal */}

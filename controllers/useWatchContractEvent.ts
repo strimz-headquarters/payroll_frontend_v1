@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { userManager } from "@/config/ManageUser";
 import { DiamondABI } from "@/constants/ABIs/DiamondABI";
 import {
@@ -6,7 +7,7 @@ import {
   USDT_ON_SEPOLIA,
 } from "@/constants/Contracts";
 import { publicClient } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { decodeEventLog, parseAbiItem } from "viem";
 import { decodeBytes32String } from "ethers";
 import { toast } from "sonner";
@@ -157,7 +158,7 @@ const useWatchContractEvents = () => {
         USDCWithdrawEvents,
       ]);
 
-      let logs_construct = [];
+      const logs_construct = [];
 
       for (let i = 0; i < USDC_FUND_LOGS.length; i++) {
         const log = USDC_FUND_LOGS[i];
@@ -171,7 +172,7 @@ const useWatchContractEvents = () => {
           topics: log.topics,
         });
 
-        let construct = {
+        const construct = {
           title: "Fund",
           subtitle: "Fund",
           token: USDC_ON_SEPOLIA,
@@ -194,7 +195,7 @@ const useWatchContractEvents = () => {
           topics: log.topics,
         });
 
-        let construct = {
+        const construct = {
           title: "Withdraw",
           subtitle: "Withdraw",
           token: USDT_ON_SEPOLIA,
@@ -217,7 +218,7 @@ const useWatchContractEvents = () => {
           topics: log.topics,
         });
 
-        let construct = {
+        const construct = {
           title: "Fund",
           subtitle: "Fund",
           token: USDT_ON_SEPOLIA,
@@ -240,7 +241,7 @@ const useWatchContractEvents = () => {
           topics: log.topics,
         });
 
-        let construct = {
+        const construct = {
           title: "Withdraw",
           subtitle: "Withdraw",
           token: USDC_ON_SEPOLIA,
@@ -258,7 +259,7 @@ const useWatchContractEvents = () => {
     }
   }
 
-  async function getLogs() {
+  const getLogs = useCallback(async () => {
     try {
       if (loading) return;
       if (isError) {
@@ -278,11 +279,11 @@ const useWatchContractEvents = () => {
       toast.error("OOPPPSSS!! Something went wrong");
       console.log(error);
     }
-  }
+  }, [isError, loading]);
 
   useEffect(() => {
     getLogs();
-  }, []);
+  }, [getLogs]);
 
   return { logs, loading, isError, getLogs };
 };
