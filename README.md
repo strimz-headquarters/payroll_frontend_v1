@@ -31,18 +31,34 @@
 
 ```mermaid
 graph TD
-    A[Diamond Proxy] --> B[Core Facet]
-    A --> C[Payment Facet]
-    A --> D[Admin Facet]
-    A --> E[Upgrade Facet]
-    B --> F[User Management]
-    C --> G[Bulk Payments]
-    C --> H[Fee Calculation]
-    D --> I[Access Control]
-    E --> J[Version Management]
+    A[Diamond Proxy] --> B[DiamondCutFacet]
+    A --> C[DiamondLoupeFacet]
+    A --> D[OwnershipFacet]
+    A --> E[PayrollFacet]
+    A --> F[PayrollFactoryFacet]
+    
+    B --> G[Upgrade Management]
+    C --> H[Introspection Functions]
+    D --> I[Ownership & Access Control]
+    E --> J[Payment Processing]
+    E --> K[Fee Calculations]
+    F --> L[Payroll Deployment]
+    F --> M[Template Management]
     
     style A fill:#4CAF50,stroke:#388E3C
-    style B,C,D,E fill:#2196F3,stroke:#1976D2
+    style B fill:#2196F3,stroke:#1976D2
+    style C fill:#2196F3,stroke:#1976D2
+    style D fill:#9C27B0,stroke:#7B1FA2
+    style E fill:#FF9800,stroke:#F57C00
+    style F fill:#FF9800,stroke:#F57C00
+    
+    classDef standard fill:#2196F3,stroke:#1976D2;
+    classDef security fill:#9C27B0,stroke:#7B1FA2;
+    classDef payroll fill:#FF9800,stroke:#F57C00;
+    
+    class B,C standard
+    class D security
+    class E,F payroll
 ```
 
 ## 💸 Fee Structure Model
