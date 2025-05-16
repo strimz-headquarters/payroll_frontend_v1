@@ -4,6 +4,13 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 import { toast } from "sonner";
 
+/**
+ * useDeletePayroll hook deletes a payroll and invalidates the cache to trigger a refetch.
+ *
+ * @returns A function that takes a payroll ID and deletes the payroll. If successful, it
+ * toasts a success message and invalidates the "strimzPayrolls" query. If there is an error,
+ * it logs the error and toasts an error message.
+ */
 const useDeletePayroll = () => {
   const queryClient = useQueryClient();
 

@@ -4,6 +4,16 @@ import { USDC_ON_SEPOLIA, USDT_ON_SEPOLIA } from "@/constants/Contracts";
 import { useCallback } from "react";
 import { toast } from "sonner";
 
+/**
+ * A hook to withdraw funds from a user's wallet.
+ *
+ * @param {string} password The user's password.
+ * @param {string} token The token type to withdraw. One of "usdc" or "usdt".
+ * @param {number} amount The amount of token to withdraw.
+ * @param {string} recipient The address of the recipient.
+ *
+ * @returns A callback function to perform the withdrawal.
+ */
 const useWithdrawFunds = () => {
   const withdrawFunds = useCallback(
     async (

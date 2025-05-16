@@ -13,6 +13,27 @@ import {
   type BaseError,
 } from "wagmi";
 
+/**
+ * Custom hook to fund a user's account with USDC or USDT tokens.
+ *
+ * This hook utilizes the `useWriteContract` hook to call the `transfer` function
+ * on the ERC20 contract to transfer tokens to the user's address. It also listens
+ * for transaction confirmation and provides feedback to the user through toast notifications.
+ *
+ * Returns:
+ *   - An object containing the `fundAccount` function to initiate the funding process.
+ *
+ * Dependencies:
+ *   - React hooks: useCallback, useEffect
+ *   - Wagmi hooks: useWaitForTransactionReceipt, useWriteContract
+ *   - External constants: USDC_ON_SEPOLIA, USDT_ON_SEPOLIA, IERC20ABI
+ *   - User management: userManager
+ *   - Utility functions: parseUnits
+ *
+ * @param {string} token The token type to fund with. One of "usdc" or "usdt".
+ * @param {number} amount The amount of token to fund the account with.
+ */
+
 const useFundAccount = () => {
   const { isConnected } = useAppKitAccount();
   const { chainId } = useAppKitNetwork();

@@ -2,16 +2,22 @@
 import { useRouter } from "next/navigation"
 import { RxCaretLeft } from "react-icons/rx"
 
+
 /**
- * FeeStructure component renders a section that explains Strimz's transaction fee structure.
- *
+ * FeeStructure component renders a section that displays the transaction fee structure.
+ * 
  * The section includes:
- * - A heading and a subheading inviting users to learn more about the fee structure.
- * - A card presenting the fee formula and example calculations.
- * - A section displaying the transaction history (Invoices component).
- *
- * The component is fully responsive, ensuring accessibility on various devices.
+ * - A back button to navigate to the previous page.
+ * - A title and description explaining the fee structure.
+ * - A main section that displays the fee formula and example calculations.
+ * - The fee formula consists of a base fee and a variable fee component.
+ * - Example calculations demonstrate the total fee for different numbers of addresses.
+ * - An additional note on how fees scale with the number of addresses.
+ * 
+ * The component is designed to be fully responsive and provides a clear understanding
+ * of how transaction fees are calculated.
  */
+
 const FeeStructure = () => {
     const router = useRouter()
 

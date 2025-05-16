@@ -45,6 +45,15 @@ createAppKit({
 })
 
 
+/**
+ * A higher-order component that wraps your application with the
+ * necessary Wagmi and React Query providers.
+ *
+ * @param {{ children: ReactNode; cookies: string | null; }} props
+ * @param {ReactNode} props.children The children to be rendered within the context.
+ * @param {string | null} props.cookies The stringified cookies to use for initializing the context.
+ * @returns {JSX.Element} The wrapped children with the necessary providers.
+ */
 function ContextProvider({ children, cookies }: { children: ReactNode; cookies: string | null }) {
     const initialState = cookieToInitialState(wagmiAdapter.wagmiConfig as Config, cookies)
 
