@@ -17,7 +17,6 @@ import {
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
-import { StrimzUD } from '@/types/auth'
 import { userManager } from '@/config/ManageUser'
 import { useAppKitAccount } from "@reown/appkit/react";
 
@@ -48,17 +47,16 @@ const ProfileChange = () => {
     const [isEditingEmail, setIsEditingEmail] = useState(false)
     const [isEditingPassword, setIsEditingPassword] = useState(false)
 
-    const [user, setUser] = useState<Partial<StrimzUD>>();
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
 
     useEffect(() => {
         const currentUser = userManager.getUser();
         if (currentUser) {
-            setUser(currentUser);
+            setName(currentUser.username || 'John Doe');
+            setEmail(currentUser.email || 'johndoe@gmail.com');
         }
     }, []);
-
-    const [name, setName] = useState(user?.username || 'John Doe')
-    const [email, setEmail] = useState(user?.email || 'johndoe@gmail.com')
 
     const { isConnected, address } = useAppKitAccount();
 

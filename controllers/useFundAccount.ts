@@ -33,12 +33,12 @@ const useFundAccount = () => {
           });
           return;
         }
-        // if (chainId !== baseSepolia.id) {
-        //   toast.error("Please switch to BaseSepolia", {
-        //     position: "top-right",
-        //   });
-        //   return;
-        // }
+        if (chainId !== baseSepolia.id) {
+          toast.error("Please switch to BaseSepolia", {
+            position: "top-right",
+          });
+          return;
+        }
         if (amount <= 0) {
           toast.error("Amount must be greater than 0", {
             position: "top-right",
@@ -67,6 +67,7 @@ const useFundAccount = () => {
       usdt_contract_address,
       writeContract,
       user_address,
+      chainId,
     ]
   );
 
