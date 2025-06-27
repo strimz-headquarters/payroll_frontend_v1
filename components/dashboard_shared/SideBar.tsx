@@ -7,6 +7,8 @@ import Logo from "../shared/Logo";
 import StrimzLogo from "@/public/logo/blueLogo.png"
 import { SideBarLinks } from "@/utils/sideBarLinks";
 import { SideBarLinksTypes } from "@/types/dashboard";
+import { LogOut } from "lucide-react";
+import { userManager } from '@/config/ManageUser';
 
 /**
  * The SideBar component renders a collapsible sidebar for the dashboard.
@@ -39,6 +41,11 @@ const SideBar = ({
     const handleCloseSideBar = () => {
         setSidebarOpen(!sidebarOpen);
     };
+
+    const handleLogout = () => {
+        userManager.clearSession();
+        router.push("/login");
+    }
 
     useEffect(() => {
         const toggleScroll = () => {
@@ -105,7 +112,7 @@ const SideBar = ({
             </div>
 
             {/* <!-- Sidebar Footer --> */}
-            <div className="w-full flex flex-col px-3 pb-8">
+            <div className="w-full flex flex-col gap-5 px-3 pb-8">
                 <div className="w-full flex flex-col justify-between h-[120px] alertGradient rounded-[12px] p-4">
                     <p className="text-[#F9FAFB] font-[500] text-center font-sora text-sm">Understand our fee structure ⚡</p>
                     <button
@@ -116,6 +123,11 @@ const SideBar = ({
                         View Fee Details
                     </button>
                 </div>
+                {/* Signout button */}
+                <button onClick={handleLogout} className='w-full flex justify-center items-center gap-2 font-poppins text-[#9B1C1C]'>
+                    <LogOut />
+                    <span>Sign out</span>
+                </button>
             </div>
         </aside>
     );

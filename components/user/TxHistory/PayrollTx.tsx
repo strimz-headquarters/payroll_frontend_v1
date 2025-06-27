@@ -23,11 +23,11 @@ const PayrollTx = ({ title, date, amount, token, status }: TxPropsTypes) => {
     return (
         <main className="w-full flex justify-between items-center cursor-pointer hover:bg-[#F9FAFB] transition-all px-2 py-2 rounded-[8px]">
             <div className="flex items-center gap-3">
-                {/* <span className={`relative w-[40px] h-[40px] rounded-full text-primary bg-[#F3F4F6] flex justify-center items-center`}>
+                <span className={`relative w-[40px] h-[40px] rounded-full text-primary bg-[#F3F4F6] flex justify-center items-center`}>
                     <AiOutlineDollarCircle className="w-4 h-4" />
                     {token === "USDC" && <Image src={usdcIcon} alt='usdt icon' className='w-6 h-6 absolute -bottom-2 -right-2' width={68} height={69} quality={100} priority />}
                     {token === "USDT" && <Image src={usdtIcon} alt='usdt icon' className='w-6 h-6 absolute -bottom-2 -right-2' width={68} height={69} quality={100} priority />}
-                </span> */}
+                </span>
                 <div className="flex flex-col gap-1">
                     <h4 className="text-primary text-sm font-[500] font-poppins">{title}</h4>
                     <p className="text-xs font-[400] font-poppins text-[#8E8C9C]">{date}</p>
