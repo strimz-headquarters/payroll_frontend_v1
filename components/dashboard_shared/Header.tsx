@@ -6,7 +6,7 @@ import UserDropdown from "./UserDropdown";
 import { useEffect, useMemo, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { toast } from "sonner";
-import baseIcon from "@/public/networks/base.webp"
+import celoIcon from "@/public/networks/celo.png"
 import Image from "next/image";
 import { userManager } from "@/config/ManageUser";
 import { StrimzUD } from "@/types/auth";
@@ -115,7 +115,7 @@ const Header = ({
                 <div className="hidden sm:flex flex-col">
                     <h4 className="text-primary capitalize font-sora font-[500] text-base">Welcome Back, {user?.username}</h4>
                     <div className="flex gap-1 items-center">
-                        <Image src={baseIcon} alt="Base Icon" className='w-4 h-4' width={16} height={16} quality={100} priority />
+                        <Image src={celoIcon} alt="Base Icon" className='w-4 h-4 rounded-full' width={16} height={16} quality={100} priority />
                         <p className="text-sm capitalize text-[#58556A] font-poppins font-[400]">{shortenAddress}</p>
                         <button type="button" onClick={handleCopy} className="text-[#58556A]">
                             <IoCopyOutline className="w-4 h-4" />

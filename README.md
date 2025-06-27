@@ -1,7 +1,7 @@
 # Strimz Payroll - Web3 Native Payroll Automation
 
 [![Strimz Banner](https://strimz-payroll.vercel.app/favicon-32x32.png)](https://strimz-payroll.vercel.app)
-[![Base Testnet Contract](https://img.shields.io/badge/Contract-Base_Sepolia-blue)](https://louper.dev/diamond/0xf61f16ec212c7d7fd08c0776d0429477a235b7ae?network=baseSepolia)
+
 
 **Enterprise-grade DeFi payroll solution with automated crypto disbursements and seamless web2 onboarding**
 
@@ -12,7 +12,7 @@
 ### Core Capabilities
 
 - 🧑💻 **Web2-style UX** with Web3 power (Account Abstraction powered)
-- 💸 **Crypto(stablecoins) payroll** (USDC/USDT on Base Sepolia)
+- 💸 **Crypto(stablecoins) payroll** (USDC/USDT on Celo)
 - 📦 **Diamond Standard Proxy** for seamless contract upgrades
 - 📈 **Progressive fee structure** (Pay-per-use model)
 - 🔄 **Bulk payment processing** (CSV or manual entry)
@@ -24,7 +24,7 @@
 |----------------------|------------------------------------------------------------------------------|
 | **Frontend**         | Next.js 14, TypeScript, Wagmi, Shadcn UI, Radix UI                           |
 | **Backend**          | Node.js, Express, PostgreSQL, Redis (Session Management)                     |
-| **Blockchain**       | Base Sepolia, USDC/USDT Token Standards                                      |
+| **Blockchain**       | Celo, USDC/USDT Token Standards                                      |
 | **Smart Contracts**  | Solidity 0.8.20, Diamond Standard (ERC-2535), Foundry, OpenZeppelin          |
 
 ## 📦 Contract Architecture
@@ -83,8 +83,8 @@ Total Fee = Base Fee (0.30 USD) + Variable Fee (0.15 × √N)
 ## 🔗 Smart Contract Verification
 
 - **Diamond Proxy:** [0xF61F...b7ae](https://louper.dev/diamond/0xf61f16ec212c7d7fd08c0776d0429477a235b7ae?network=baseSepolia)
-- **USDC Contract:** Base Sepolia Verified
-- **USDT Contract:** Base Sepolia Verified
+- **USDC Contract:** Celo Network
+- **USDT Contract:** Celo Network
 
 ## 🌐 API Documentation
 
@@ -114,7 +114,7 @@ sequenceDiagram
 
 ## 🙏 Acknowledgements
 
-- **Base Network** for EVM-optimized infrastructure
+- **Celo Network** for EVM-optimized infrastructure
 - **OpenZeppelin** for battle-tested contract libraries
 - **EIP-2535** Diamond Standard community
 - **AA Community** for account abstraction pioneers
